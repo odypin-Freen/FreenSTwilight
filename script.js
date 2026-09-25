@@ -81,3 +81,36 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     window.setTimeout(() => link.classList.remove("is-clicked"), 140);
   });
 });
+
+
+// Rotate the hero photo through the gallery every 10 seconds.
+(() => {
+  const heroImage = document.querySelector(".hero-art img");
+  const galleryImages = [...document.querySelectorAll(".gallery-grid img")];
+  if (!heroImage || galleryImages.length < 2) return;
+
+  const photos = [...new Set(galleryImages.map((image) => image.getAttribute("src")).filter(Boolean))]
+    .filter((src) => new URL(src, document.baseURI).href !== new URL(heroImage.getAttribute("src"), document.baseURI).href);
+  if (!photos.length) return;
+
+  let index = 0;
+  const showNextPhoto = () => {
+    if (document.hidden) return;
+    const src = photos[index % photos.length];
+    index += 1;
+    const preload = new Image();
+    preload.onload = () => {
+      heroImage.classList.add("is-changing");
+      window.setTimeout(() => {
+        heroImage.src = src;
+        heroImage.alt = document.documentElement.lang === "es"
+          ? "Foto de Freen Sarocha de la galería"
+          : "Freen Sarocha photo from the gallery";
+        requestAnimationFrame(() => heroImage.classList.remove("is-changing"));
+      }, 180);
+    };
+    preload.src = src;
+  };
+
+  window.setInterval(showNextPhoto, 10000);
+})();

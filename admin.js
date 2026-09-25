@@ -3,6 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const cfg = window.SUPABASE_CONFIG || {};
 const ready = cfg.url && cfg.publishableKey && !cfg.url.includes("YOUR_PROJECT_REF") && !cfg.publishableKey.includes("YOUR_SUPABASE");
 const loginForm = document.querySelector("#login-form");
+const newPasswordForm = document.querySelector("#new-password-form");
 const loginStatus = document.querySelector("#login-status");
 const panel = document.querySelector("#review-panel");
 const list = document.querySelector("#review-list");
@@ -14,20 +15,19 @@ if (!ready) {
 } else {
   const supabase = createClient(cfg.url, cfg.publishableKey);
   const say = (message, state = "info") => { loginStatus.textContent = message; loginStatus.dataset.state = state; };
-
+  supabase.auth.onAuthStateChange((event) => {
+    if (event === "PASSWORD_RECOVERY") {
+      loginForm.hidden = true; panel.hidden = true; newPasswordForm.hidden = false;
+      say("Choose a new password for the admin account.");
+    }
+  });
   async function showQueue() {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    loginForm.hidden = true;
-    panel.hidden = false;
+    loginForm.hidden = true; panel.hidden = false;
     const { data, error } = await supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "pending").order("created_at", { ascending: true });
-    if (error) {
-      list.textContent = "Could not load the queue. Check that this account is listed as a community admin.";
-      count.textContent = "";
-      return;
-    }
-    list.replaceChildren();
-    count.textContent = `${data.length} awaiting review`;
+    if (error) { list.textContent = "Could not load the queue. Check that this account is listed as a community admin."; count.textContent = ""; return; }
+    list.replaceChildren(); count.textContent = data.length + " awaiting review";
     if (!data.length) { const empty = document.createElement("p"); empty.className = "review-message"; empty.textContent = "The queue is clear. New fan submissions will appear here."; list.append(empty); return; }
     for (const post of data) {
       const { data: signed } = await supabase.storage.from("community-pending").createSignedUrl(post.image_path, 600);
@@ -45,7 +45,6 @@ if (!ready) {
       actions.append(approve, reject); details.append(author, date, message, actions); article.append(image, details); list.append(article);
     }
   }
-
   async function review(post, decision, approve, reject) {
     approve.disabled = reject.disabled = true;
     if (decision === "rejected") {
@@ -54,17 +53,33 @@ if (!ready) {
     }
     const { error } = await supabase.from("community_posts").update({ status: decision, reviewed_at: new Date().toISOString() }).eq("id", post.id);
     if (error) { say("Could not save the review decision. Check admin permissions.", "error"); approve.disabled = reject.disabled = false; return; }
-    say(decision === "approved" ? "Post approved and now visible on the page." : "Post rejected and its photo removed.", "success");
-    await showQueue();
+    say(decision === "approved" ? "Post approved and now visible on the page." : "Post rejected and its photo removed.", "success"); await showQueue();
   }
-
   loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const button = loginForm.querySelector("button"); button.disabled = true; say("Signing in…");
+    event.preventDefault(); const button = loginForm.querySelector("button"); button.disabled = true; say("Signing in…");
     const { error } = await supabase.auth.signInWithPassword({ email: document.querySelector("#admin-email").value.trim(), password: document.querySelector("#admin-password").value });
     button.disabled = false;
     if (error) { say("Sign-in failed. Check the email and password, then try again.", "error"); return; }
     await showQueue();
+  });
+  document.querySelector("#password-reset").addEventListener("click", async () => {
+    const email = document.querySelector("#admin-email").value.trim();
+    if (!email) { say("Enter your admin email first.", "error"); document.querySelector("#admin-email").focus(); return; }
+    const button = document.querySelector("#password-reset"); button.disabled = true; say("Sending password setup link…");
+    const redirectTo = new URL("admin.html", location.href).href;
+    const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+    button.disabled = false;
+    say(error ? "Could not send the email. Check the address and try again." : "If that admin account exists, a password setup link is on its way.", error ? "error" : "success");
+  });
+  newPasswordForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const password = document.querySelector("#new-password").value;
+    const confirm = document.querySelector("#confirm-password").value;
+    if (password !== confirm) { say("Those passwords do not match.", "error"); return; }
+    const button = newPasswordForm.querySelector("button"); button.disabled = true; say("Saving your password…");
+    const { error } = await supabase.auth.updateUser({ password }); button.disabled = false;
+    if (error) { say("Could not save the password. Request a fresh setup link and try again.", "error"); return; }
+    await supabase.auth.signOut(); newPasswordForm.reset(); newPasswordForm.hidden = true; loginForm.hidden = false; say("Password saved. You can now sign in.", "success");
   });
   document.querySelector("#sign-out").addEventListener("click", async () => { await supabase.auth.signOut(); panel.hidden = true; loginForm.hidden = false; say("Signed out."); });
   showQueue();

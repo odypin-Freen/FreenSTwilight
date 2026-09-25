@@ -21,7 +21,13 @@
         <label for="admin-email">Admin email</label><input id="admin-email" type="email" autocomplete="username" required>
         <label for="admin-password">Password</label><input id="admin-password" type="password" autocomplete="current-password" required>
         <button class="button" type="submit">SIGN IN</button>
+        <button id="password-reset" class="text-button" type="button">EMAIL A PASSWORD SETUP LINK</button>
         <p id="login-status" class="post-status" role="status" aria-live="polite"></p>
+      </form>
+      <form id="new-password-form" class="post-form login-form" hidden>
+        <label for="new-password">New password</label><input id="new-password" type="password" autocomplete="new-password" minlength="8" required>
+        <label for="confirm-password">Confirm new password</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+        <button class="button" type="submit">SAVE PASSWORD</button>
       </form>
       <section id="review-panel" class="review-panel" hidden>
         <div class="review-heading"><div><h2>Pending posts</h2><p id="review-count" class="section-intro"></p></div><button id="sign-out" class="button secondary-button" type="button">SIGN OUT</button></div>

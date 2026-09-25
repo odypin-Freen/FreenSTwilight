@@ -9,14 +9,9 @@ A responsive, static fan page for Freen Sarocha, made with HTML, CSS, and a smal
 - `script.js` — small click feedback for external links
 - `images/` — add the site's image files here
 
-## Add your photos
+## Photo gallery
 
-Create an `images` folder beside `index.html` and put these image files inside it:
-
-- `freen-triptych.png`
-- `1C8F7DC8-0075-489B-B6EF-9AB94DB0B63A.jpg`
-
-The page references those exact filenames. If your image filenames differ, update the `src` paths in `index.html`. To add more gallery photos, copy one `<figure class="gallery-card">...</figure>` block in the Gallery section and change its image path and alt text.
+The page displays the photos in the `images/` folder. The `images/` directory in the repository should contain the supplied image assets; add new images there and add a matching `<figure class="gallery-card">...</figure>` in the Gallery section of `index.html`.
 
 ## Preview locally
 

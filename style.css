@@ -162,3 +162,139 @@ footer small a { text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-art img { transition: none; }
 }
+
+
+/* Cute modern graffiti palette and tulip accents */
+:root {
+  --cream: #fff6fb;
+  --paper: #fffdfd;
+  --pink: #ff62a7;
+  --hot-pink: #d92f83;
+  --lavender: #c4b1ff;
+  --mint: #9de8d5;
+  --yellow: #ffe27a;
+  --ink: #21152b;
+  --muted: #6f6177;
+  --line: #21152b;
+  --shadow: 6px 7px 0 var(--ink);
+}
+body {
+  background:
+    radial-gradient(ellipse at 5% 18%, rgba(255,83,163,.20), transparent 20rem),
+    radial-gradient(ellipse at 94% 26%, rgba(167,135,255,.21), transparent 23rem),
+    radial-gradient(ellipse at 52% 92%, rgba(78,218,190,.16), transparent 24rem),
+    var(--cream);
+}
+.site-header {
+  background: rgba(255,246,251,.91);
+  border-color: var(--ink);
+  box-shadow: 0 5px 0 rgba(217,47,131,.18);
+}
+.brand, h2, .feed-heading h3 { font-family: "Fredoka", "DM Sans", sans-serif; }
+.brand { font-size: 25px; letter-spacing: .02em; }
+.brand span { font-family: "DM Sans", sans-serif; }
+h1 {
+  font-family: "Bowlby One SC", "Fredoka", sans-serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+  color: #fffdfd;
+  -webkit-text-stroke: 2px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 var(--lavender);
+  transform: rotate(-3deg);
+}
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 310px;
+  height: 270px;
+  left: -45px;
+  top: 50px;
+  pointer-events: none;
+  opacity: .58;
+  background:
+    radial-gradient(ellipse at 28% 30%, rgba(255,98,167,.24) 0 24%, transparent 25%),
+    radial-gradient(ellipse at 68% 62%, rgba(157,232,213,.34) 0 28%, transparent 29%),
+    radial-gradient(ellipse at 53% 35%, rgba(196,177,255,.28) 0 34%, transparent 35%);
+  filter: blur(1px);
+}
+.eyebrow {
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-4deg);
+}
+.button, .language-toggle {
+  border-width: 2px;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.button { background: var(--pink); color: var(--ink); }
+.button:hover, .language-toggle:hover { transform: translate(3px,3px) rotate(-1deg); box-shadow: 1px 1px 0 var(--ink); }
+.hero-art {
+  border: 3px solid var(--ink);
+  border-radius: 30px 18px 28px 20px;
+  background: linear-gradient(135deg, var(--pink), var(--lavender) 55%, var(--mint));
+  box-shadow: 9px 10px 0 var(--ink), 15px 16px 0 rgba(217,47,131,.18);
+}
+.hero-art img { border-radius: 18px 12px 18px 12px; }
+.hero-note {
+  border-width: 2px;
+  border-radius: 48% 52% 45% 55%;
+  box-shadow: 3px 3px 0 var(--ink);
+  font-family: "Fredoka", sans-serif;
+}
+.section-title > span {
+  background: var(--pink);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+h2 {
+  color: var(--ink);
+  text-shadow: 2px 2px 0 rgba(255,98,167,.45);
+  letter-spacing: -.025em;
+}
+.video-card, .gallery-card, .post-form {
+  border-width: 2px;
+  border-radius: 18px 24px 17px 22px;
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.gallery-card:nth-child(4n + 1) { background: #fffdfd; }
+.gallery-card:nth-child(4n + 2) { background: #fff5fa; }
+.gallery-card:nth-child(4n + 3) { background: #f5f1ff; }
+.gallery-card:nth-child(4n) { background: #effbf7; }
+.gallery-card:hover { box-shadow: 7px 8px 0 var(--ink), 11px 12px 0 rgba(255,98,167,.22); }
+.sticker {
+  background: var(--yellow);
+  box-shadow: 2px 2px 0 var(--ink);
+  text-transform: uppercase;
+}
+.sticker-mint { background: var(--mint); }
+.link-card, .post-card {
+  border-radius: 16px 23px 17px 22px;
+  box-shadow: 4px 5px 0 var(--ink);
+}
+.link-card:hover { background: #fff0f7; }
+.icon { box-shadow: 2px 2px 0 var(--ink); }
+.sparkle {
+  z-index: 0;
+  font-size: clamp(27px, 4vw, 43px);
+  filter: drop-shadow(2px 3px 0 rgba(33,21,43,.2));
+  animation: tulip-drift 5s ease-in-out infinite;
+}
+.s2 { animation-delay: -1.7s; }
+.s3 { animation-delay: -3.2s; }
+@keyframes tulip-drift {
+  0%, 100% { translate: 0 0; rotate: -5deg; }
+  50% { translate: 0 -9px; rotate: 5deg; }
+}
+.post-form input:not([type="checkbox"]), .post-form textarea {
+  border-color: #d7c7df;
+  border-radius: 10px 15px 11px 14px;
+}
+.language-toggle { background: var(--mint); }
+@media (max-width: 800px) {
+  .hero-copy::before { left: 50%; transform: translateX(-50%); }
+  .sparkle { font-size: 29px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sparkle { animation: none; }
+}

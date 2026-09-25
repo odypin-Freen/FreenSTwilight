@@ -1,0 +1,5 @@
+[functions.submit-post]
+verify_jwt = false
+
+[functions.list-approved]
+verify_jwt = false

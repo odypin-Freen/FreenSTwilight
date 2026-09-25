@@ -35,9 +35,23 @@ const messages = {
     submitError: "No se pudo enviar tu publicación.",
     thanks: "¡Gracias! Tu mensaje y tu foto serán privados mientras Ody los revisa.",
     tryAgain: "No se pudo enviar tu publicación. Inténtalo de nuevo."
+  },
+  th: {
+    setup: "โพสต์จากชุมชนจะแสดงที่นี่เมื่อเว็บไซต์เชื่อมต่อกับระบบตรวจสอบแล้ว",
+    inactive: "ขณะนี้ยังไม่เปิดรับโพสต์ ผู้ดูแลเว็บไซต์ต้องตั้งค่า Supabase ให้เสร็จก่อน",
+    loadError: "โหลดโพสต์ที่อนุมัติแล้วไม่สำเร็จ",
+    empty: "ยังไม่มีโพสต์จากงานที่ได้รับอนุมัติ มาแบ่งปันความทรงจำกันเป็นคนแรกเลย!",
+    anonymous: "แฟนคลับนิรนาม",
+    loadingError: "ขณะนี้โหลดโพสต์ที่อนุมัติแล้วไม่ได้ โปรดลองอีกครั้งภายหลัง",
+    choosePhoto: "เลือกรูปเพื่อแนบไปกับข้อความ",
+    tooLarge: "รูปมีขนาดเกิน 6 MB โปรดเลือกรูปที่มีขนาดเล็กกว่า",
+    sending: "กำลังส่งโพสต์ให้ตรวจสอบ…",
+    submitError: "ส่งโพสต์ไม่สำเร็จ",
+    thanks: "ขอบคุณ! ข้อความและรูปของคุณจะยังเป็นส่วนตัวระหว่างที่ Ody ตรวจสอบ",
+    tryAgain: "ส่งโพสต์ไม่สำเร็จ โปรดลองอีกครั้ง"
   }
 };
-const t = (key) => (messages[document.documentElement.lang === "es" ? "es" : "en"][key]);
+const t = (key) => (messages[document.documentElement.lang]?.[key] || messages.en[key]);
 
 function setStatus(message, state = "info") {
   if (!status) return;
@@ -80,7 +94,7 @@ if (!configReady) {
         card.className = "post-card";
         const image = document.createElement("img");
         image.src = post.image_url;
-        image.alt = `${document.documentElement.lang === "es" ? "Foto compartida por" : "Photo shared by"} ${post.display_name || t("anonymous")}`;
+        image.alt = `${document.documentElement.lang === "es" ? "Foto compartida por" : document.documentElement.lang === "th" ? "รูปที่แบ่งปันโดย" : "Photo shared by"} ${post.display_name || t("anonymous")}`;
         image.loading = "lazy";
         const caption = document.createElement("figcaption");
         const author = document.createElement("p");
@@ -135,6 +149,8 @@ document.addEventListener("freen-language-change", () => {
   if (status?.dataset.state === "info" || status?.dataset.state === "success") {
     status.textContent = document.documentElement.lang === "es"
       ? "Tu publicación y foto permanecerán privadas hasta que Ody las apruebe."
-      : "Your post and photo stay private until approved by Ody.";
+      : document.documentElement.lang === "th"
+        ? "โพสต์และรูปของคุณจะยังเป็นส่วนตัวจนกว่า Ody จะอนุมัติ"
+        : "Your post and photo stay private until approved by Ody.";
   }
 });

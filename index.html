@@ -17,7 +17,7 @@
   <div class="sparkle s3" aria-hidden="true">✧</div>
 
   <header class="site-header">
-    <a class="brand" href="#top">FREEN <span>FAN PAGE</span></a>
+    <a class="brand" href="#top">FREEN <span data-i18n="fanPage">FAN PAGE</span></a>
     <nav aria-label="Main navigation" data-i18n-aria="navLabel">
       <a href="#video" data-i18n="navVideo">Video</a>
       <a href="#gallery" data-i18n="navGallery">Gallery</a>
@@ -47,12 +47,12 @@
         <div class="video-frame">
           <iframe src="https://www.youtube.com/embed/uDbbMofesx0" title="Featured FREEN video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <div class="video-info"><span class="sticker">♡ FEATURED ♡</span></div>
+        <div class="video-info"><span class="sticker" data-i18n="featured">♡ FEATURED ♡</span></div>
       </div>
     </section>
 
     <section id="gallery" class="section" aria-labelledby="gallery-title">
-      <div class="section-title"><span>02</span><h2 id="gallery-title">Gallery <span class="title-heart">♡</span></h2></div>
+      <div class="section-title"><span>02</span><h2 id="gallery-title"><span data-i18n="galleryHeading">Gallery</span> <span class="title-heart">♡</span></h2></div>
       <p class="section-intro" data-i18n="galleryIntro">A few favorite moments, collected with love.</p>
       <div class="gallery-grid">
         <figure class="gallery-card">
@@ -181,7 +181,7 @@
 
 
     <section id="community" class="section" aria-labelledby="community-title">
-      <div class="section-title"><span>04</span><h2 id="community-title">Community <span class="title-heart">♡</span></h2></div>
+      <div class="section-title"><span>04</span><h2 id="community-title"><span data-i18n="communityHeading">Community</span> <span class="title-heart">♡</span></h2></div>
       <p class="section-intro" data-i18n="communityIntro">Share a favorite event memory with the fan community.</p>
       <div class="community-layout">
         <form id="post-form" class="post-form">
@@ -198,14 +198,14 @@
           <p id="post-status" class="post-status" role="status" aria-live="polite" data-i18n="privateUntilApproval">Your post and photo stay private until approved by Ody.</p>
         </form>
         <div class="community-feed-wrap">
-          <div class="feed-heading"><h3 data-i18n="approvedMoments">Approved moments</h3><span class="sticker sticker-mint">♡ COMMUNITY</span></div>
+          <div class="feed-heading"><h3 data-i18n="approvedMoments">Approved moments</h3><span class="sticker sticker-mint" data-i18n="communitySticker">♡ COMMUNITY</span></div>
           <div id="community-feed" class="community-feed" aria-live="polite"><p class="feed-empty" data-i18n="loadingPosts">Loading approved posts…</p></div>
         </div>
       </div>
     </section>
 
     <section id="links" class="section" aria-labelledby="links-title">
-      <div class="section-title"><span>03</span><h2 id="links-title">Links Favoritos <span class="title-heart">♡</span></h2></div>
+      <div class="section-title"><span>03</span><h2 id="links-title"><span data-i18n="linksHeading">Favorite Links</span> <span class="title-heart">♡</span></h2></div>
       <div class="link-grid">
         <a class="link-card" href="https://www.youtube.com/@solenn_entertainment" target="_blank" rel="noopener noreferrer">
           <span class="icon" aria-hidden="true">▶</span><span><strong>YouTube</strong><small>Videos &amp; clips</small></span><b aria-hidden="true">↗</b>
@@ -223,7 +223,7 @@
     </section>
   </main>
 
-  <footer><div>FREEN FAN PAGE</div><small>Made with ♡ · Ody's fan project · <a href="admin.html">Admin</a></small></footer>
+  <footer><div>FREEN FAN PAGE</div><small><span data-i18n="footerCredit">Made with ♡ · Ody's fan project ·</span> <a href="admin.html" data-i18n="admin">Admin</a></small></footer>
   <script src="script.js"></script>
   <script src="supabase-config.js"></script>
   <script type="module" src="community.js"></script>

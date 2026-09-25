@@ -40,12 +40,32 @@
       sendReview: "ENVIAR PARA REVISIÓN", privateUntilApproval: "Tu publicación y foto serán privadas hasta que Ody las apruebe.",
       approvedMoments: "Momentos aprobados", loadingPosts: "Cargando publicaciones aprobadas…",
       changeLanguage: "Cambiar el idioma a inglés"
+    },
+    th: {
+      pageTitle: "FREEN — แฟนเพจโดย Ody",
+      fanPage: "แฟนเพจ", galleryHeading: "แกลเลอรี", featured: "♡ ไฮไลต์ ♡", communityHeading: "ชุมชน", communitySticker: "♡ ชุมชน", linksHeading: "ลิงก์โปรด", footerCredit: "สร้างด้วย ♡ · โปรเจกต์แฟนคลับของ Ody ·", admin: "ผู้ดูแล",
+      navLabel: "เมนูหลัก", navVideo: "วิดีโอ", navGallery: "แกลเลอรี", navCommunity: "ชุมชน", navLinks: "ลิงก์",
+      eyebrow: "แฟนเพจที่สร้างขึ้นด้วยความรัก",
+      tagline: "มุมเล็กๆ ที่เต็มไปด้วยความรักและมอบให้ Freen Sarocha Chankimha",
+      watchVideo: "ดูวิดีโอ", heroNote: "รักและคิดถึงเสมอ ♡",
+      galleryIntro: "รวมช่วงเวลาโปรดที่เก็บไว้ด้วยความรัก",
+      galleryTip: "คอลเลกชันช่วงเวลาโปรดที่แบ่งปันด้วยความรัก",
+      communityIntro: "แบ่งปันช่วงเวลาที่คุณประทับใจจากงานกับแฟนๆ",
+      yourName: "ชื่อของคุณ", optional: "(ไม่บังคับ)", anonymous: "แฟนคลับนิรนาม",
+      yourMessage: "ข้อความของคุณ", messagePlaceholder: "ฝากข้อความดีๆ เกี่ยวกับงานไว้ได้เลย…",
+      eventPhoto: "รูปจากงาน",
+      photoHint: "JPG, PNG หรือ WebP · ขนาดไม่เกิน 6 MB กรุณาอัปโหลดรูปที่คุณได้รับอนุญาตให้แบ่งปัน",
+      consent: "ฉันเข้าใจว่ารูปและข้อความของฉันจะเผยแพร่ต่อสาธารณะหากได้รับอนุมัติ",
+      sendReview: "ส่งให้ตรวจสอบ", privateUntilApproval: "โพสต์และรูปของคุณจะยังเป็นส่วนตัวจนกว่า Ody จะอนุมัติ",
+      approvedMoments: "ช่วงเวลาที่อนุมัติแล้ว", loadingPosts: "กำลังโหลดโพสต์ที่อนุมัติแล้ว…",
+      changeLanguage: "เปลี่ยนภาษาเป็นอังกฤษ"
     }
+  };
   };
   const root = document.documentElement;
   const toggle = document.querySelector("#language-toggle");
   const applyLanguage = (language) => {
-    const lang = language === "es" ? "es" : "en";
+    const lang = translations[language] ? language : "en";
     const words = translations[lang];
     root.lang = lang;
     document.title = words.pageTitle;
@@ -62,17 +82,17 @@
       if (value) element.setAttribute("aria-label", value);
     });
     if (toggle) {
-      toggle.textContent = lang === "en" ? "ES" : "EN";
-      toggle.setAttribute("aria-pressed", String(lang === "es"));
+      toggle.textContent = ({ en: "ES", es: "TH", th: "EN" })[lang];
+      toggle.setAttribute("aria-pressed", String(lang !== "en"));
       toggle.setAttribute("aria-label", words.changeLanguage);
     }
     localStorage.setItem("freen-language", lang);
     document.dispatchEvent(new CustomEvent("freen-language-change", { detail: { language: lang } }));
   };
-  window.freenTranslate = (key) => translations[root.lang === "es" ? "es" : "en"][key];
+  window.freenTranslate = (key) => translations[root.lang]?.[key] || translations.en[key];
   const savedLanguage = localStorage.getItem("freen-language");
-  applyLanguage(savedLanguage === "es" ? "es" : "en");
-  toggle?.addEventListener("click", () => applyLanguage(root.lang === "en" ? "es" : "en"));
+  applyLanguage(translations[savedLanguage] ? savedLanguage : "en");
+  toggle?.addEventListener("click", () => applyLanguage(({ en: "es", es: "th", th: "en" })[root.lang] || "en"));
 })();
 
 document.querySelectorAll('a[target="_blank"]').forEach((link) => {
@@ -105,7 +125,9 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
         heroImage.src = src;
         heroImage.alt = document.documentElement.lang === "es"
           ? "Foto de Freen Sarocha de la galería"
-          : "Freen Sarocha photo from the gallery";
+          : document.documentElement.lang === "th"
+            ? "รูป Freen Sarocha จากแกลเลอรี"
+            : "Freen Sarocha photo from the gallery";
         requestAnimationFrame(() => heroImage.classList.remove("is-changing"));
       }, 180);
     };

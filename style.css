@@ -64,7 +64,7 @@ h2 { margin: 0; font: 700 45px/1.1 "Playfair Display", serif; letter-spacing: -.
 .video-info { padding: 18px 5px 4px; }
 .sticker { display: inline-block; padding: 7px 12px; border: 2px solid var(--line); border-radius: 999px; background: var(--pink); font-size: 10px; font-weight: 800; transform: rotate(-2deg); }
 .sticker-mint { background: var(--mint); }
-.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 24px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: 22px; }
 .gallery-card { margin: 0; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
 .gallery-card:nth-child(3n + 1) { transform: rotate(-2deg); }
 .gallery-card:nth-child(3n + 2) { transform: rotate(1.5deg); }
@@ -100,7 +100,7 @@ footer small { color: var(--muted); font-weight: 400; }
   .tagline { margin: 0 auto; }
   h1 { font-size: clamp(82px, 20vw, 120px); }
   .hero-art { max-width: 650px; width: 95%; margin: auto; }
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .link-grid { grid-template-columns: 1fr; }
   h2 { font-size: 36px; }
   footer { margin-left: 16px; margin-right: 16px; flex-direction: column; gap: 8px; }
@@ -108,7 +108,7 @@ footer small { color: var(--muted); font-weight: 400; }
 @media (max-width: 480px) {
   .brand { font-size: 19px; }
   nav { gap: 9px; font-size: 9px; }
-  .gallery-grid { grid-template-columns: 1fr; gap: 24px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .gallery-card { width: min(100%, 400px); margin: auto; }
   .section { padding-top: 55px; }
   .section-title { gap: 10px; }

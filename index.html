@@ -21,6 +21,7 @@
     <nav aria-label="Main navigation">
       <a href="#video">Video</a>
       <a href="#gallery">Gallery</a>
+      <a href="#community">Community</a>
       <a href="#links">Links</a>
     </nav>
   </header>
@@ -177,6 +178,31 @@
       <p class="gallery-tip">A collection of favorite moments, shared with love.</p>
     </section>
 
+
+    <section id="community" class="section" aria-labelledby="community-title">
+      <div class="section-title"><span>04</span><h2 id="community-title">Community <span class="title-heart">♡</span></h2></div>
+      <p class="section-intro">Share a favorite event memory with the fan community.</p>
+      <div class="community-layout">
+        <form id="post-form" class="post-form">
+          <label for="post-name">Your name <span>(optional)</span></label>
+          <input id="post-name" name="name" maxlength="40" autocomplete="nickname" placeholder="Anonymous fan">
+          <label for="post-message">Your message</label>
+          <textarea id="post-message" name="message" maxlength="500" rows="4" required placeholder="Leave a kind message about the event…"></textarea>
+          <label for="post-photo">Event photo</label>
+          <input id="post-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required>
+          <small class="form-hint">JPG, PNG, or WebP · up to 6 MB. Please upload a photo you have permission to share.</small>
+          <label class="consent-row"><input id="post-consent" type="checkbox" required><span>I understand my photo and message will be visible publicly if approved.</span></label>
+          <div class="website-field" aria-hidden="true"><label for="post-website">Website</label><input id="post-website" name="website" tabindex="-1" autocomplete="off"></div>
+          <button class="button submit-button" type="submit">SEND FOR REVIEW <span aria-hidden="true">♡</span></button>
+          <p id="post-status" class="post-status" role="status" aria-live="polite">Your post and photo stay private until approved by Ody.</p>
+        </form>
+        <div class="community-feed-wrap">
+          <div class="feed-heading"><h3>Approved moments</h3><span class="sticker sticker-mint">♡ COMMUNITY</span></div>
+          <div id="community-feed" class="community-feed" aria-live="polite"><p class="feed-empty">Loading approved posts…</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="links" class="section" aria-labelledby="links-title">
       <div class="section-title"><span>03</span><h2 id="links-title">Links Favoritos <span class="title-heart">♡</span></h2></div>
       <div class="link-grid">
@@ -196,7 +222,9 @@
     </section>
   </main>
 
-  <footer><div>FREEN FAN PAGE</div><small>Made with ♡ · Ody's fan project</small></footer>
+  <footer><div>FREEN FAN PAGE</div><small>Made with ♡ · Ody's fan project · <a href="admin.html">Admin</a></small></footer>
   <script src="script.js"></script>
+  <script src="supabase-config.js"></script>
+  <script type="module" src="community.js"></script>
 </body>
 </html>

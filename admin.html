@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff9f0">
+  <title>Post Review — FREEN Fan Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html">FREEN <span>FAN PAGE</span></a><nav aria-label="Admin navigation"><a href="index.html">Back to page</a></nav></header>
+  <main class="admin-main">
+    <section class="section" aria-labelledby="admin-title">
+      <div class="section-title"><span>♡</span><h1 id="admin-title" class="admin-title">Post Review</h1></div>
+      <p class="section-intro">Sign in to review event messages and photos before they appear publicly.</p>
+      <form id="login-form" class="post-form login-form">
+        <label for="admin-email">Admin email</label><input id="admin-email" type="email" autocomplete="username" required>
+        <label for="admin-password">Password</label><input id="admin-password" type="password" autocomplete="current-password" required>
+        <button class="button" type="submit">SIGN IN</button>
+        <p id="login-status" class="post-status" role="status" aria-live="polite"></p>
+      </form>
+      <section id="review-panel" class="review-panel" hidden>
+        <div class="review-heading"><div><h2>Pending posts</h2><p id="review-count" class="section-intro"></p></div><button id="sign-out" class="button secondary-button" type="button">SIGN OUT</button></div>
+        <div id="review-list" class="review-list" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+  <footer><div>FREEN FAN PAGE</div><small>Private review dashboard</small></footer>
+  <script src="supabase-config.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

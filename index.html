@@ -18,25 +18,26 @@
 
   <header class="site-header">
     <a class="brand" href="#top">FREEN <span>FAN PAGE</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#video">Video</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#community">Community</a>
-      <a href="#links">Links</a>
+    <nav aria-label="Main navigation" data-i18n-aria="navLabel">
+      <a href="#video" data-i18n="navVideo">Video</a>
+      <a href="#gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#community" data-i18n="navCommunity">Community</a>
+      <a href="#links" data-i18n="navLinks">Links</a>
     </nav>
+    <button id="language-toggle" class="language-toggle" type="button" aria-label="Change language to Spanish" aria-pressed="false">ES</button>
   </header>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">A FAN PAGE MADE WITH LOVE</p>
+        <p class="eyebrow" data-i18n="eyebrow">A FAN PAGE MADE WITH LOVE</p>
         <h1 id="hero-title">FREEN</h1>
-        <p class="tagline">A little corner of love dedicated to Freen Sarocha Chankimha.</p>
-        <a class="button" href="#video">WATCH VIDEO <span aria-hidden="true">↓</span></a>
+        <p class="tagline" data-i18n="tagline">A little corner of love dedicated to Freen Sarocha Chankimha.</p>
+        <a class="button" href="#video"><span data-i18n="watchVideo">WATCH VIDEO</span> <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-art">
         <img src="images/freen-triptych.png" alt="Freen Sarocha photo collage">
-        <span class="hero-note">all the love ♡</span>
+        <span class="hero-note" data-i18n="heroNote">all the love ♡</span>
       </div>
     </section>
 
@@ -52,7 +53,7 @@
 
     <section id="gallery" class="section" aria-labelledby="gallery-title">
       <div class="section-title"><span>02</span><h2 id="gallery-title">Gallery <span class="title-heart">♡</span></h2></div>
-      <p class="section-intro">A few favorite moments, collected with love.</p>
+      <p class="section-intro" data-i18n="galleryIntro">A few favorite moments, collected with love.</p>
       <div class="gallery-grid">
         <figure class="gallery-card">
           <img src="images/072F229B-A4A3-4390-B3E0-C7E95CB2543D.jpg" alt="Freen Sarocha gallery photo 01" loading="lazy">
@@ -175,30 +176,30 @@
           <figcaption><span class="sticker sticker-mint">♡ ALWAYS</span><span class="caption-text">Ody's Collage</span></figcaption>
         </figure>
       </div>
-      <p class="gallery-tip">A collection of favorite moments, shared with love.</p>
+      <p class="gallery-tip" data-i18n="galleryTip">A collection of favorite moments, shared with love.</p>
     </section>
 
 
     <section id="community" class="section" aria-labelledby="community-title">
       <div class="section-title"><span>04</span><h2 id="community-title">Community <span class="title-heart">♡</span></h2></div>
-      <p class="section-intro">Share a favorite event memory with the fan community.</p>
+      <p class="section-intro" data-i18n="communityIntro">Share a favorite event memory with the fan community.</p>
       <div class="community-layout">
         <form id="post-form" class="post-form">
-          <label for="post-name">Your name <span>(optional)</span></label>
-          <input id="post-name" name="name" maxlength="40" autocomplete="nickname" placeholder="Anonymous fan">
-          <label for="post-message">Your message</label>
-          <textarea id="post-message" name="message" maxlength="500" rows="4" required placeholder="Leave a kind message about the event…"></textarea>
-          <label for="post-photo">Event photo</label>
+          <label for="post-name"><span data-i18n="yourName">Your name</span> <span data-i18n="optional">(optional)</span></label>
+          <input id="post-name" name="name" maxlength="40" autocomplete="nickname" placeholder="Anonymous fan" data-i18n-placeholder="anonymous">
+          <label for="post-message" data-i18n="yourMessage">Your message</label>
+          <textarea id="post-message" name="message" maxlength="500" rows="4" required placeholder="Leave a kind message about the event…" data-i18n-placeholder="messagePlaceholder"></textarea>
+          <label for="post-photo" data-i18n="eventPhoto">Event photo</label>
           <input id="post-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required>
-          <small class="form-hint">JPG, PNG, or WebP · up to 6 MB. Please upload a photo you have permission to share.</small>
-          <label class="consent-row"><input id="post-consent" type="checkbox" required><span>I understand my photo and message will be visible publicly if approved.</span></label>
+          <small class="form-hint" data-i18n="photoHint">JPG, PNG, or WebP · up to 6 MB. Please upload a photo you have permission to share.</small>
+          <label class="consent-row"><input id="post-consent" type="checkbox" required><span data-i18n="consent">I understand my photo and message will be visible publicly if approved.</span></label>
           <div class="website-field" aria-hidden="true"><label for="post-website">Website</label><input id="post-website" name="website" tabindex="-1" autocomplete="off"></div>
-          <button class="button submit-button" type="submit">SEND FOR REVIEW <span aria-hidden="true">♡</span></button>
-          <p id="post-status" class="post-status" role="status" aria-live="polite">Your post and photo stay private until approved by Ody.</p>
+          <button class="button submit-button" type="submit"><span data-i18n="sendReview">SEND FOR REVIEW</span> <span aria-hidden="true">♡</span></button>
+          <p id="post-status" class="post-status" role="status" aria-live="polite" data-i18n="privateUntilApproval">Your post and photo stay private until approved by Ody.</p>
         </form>
         <div class="community-feed-wrap">
-          <div class="feed-heading"><h3>Approved moments</h3><span class="sticker sticker-mint">♡ COMMUNITY</span></div>
-          <div id="community-feed" class="community-feed" aria-live="polite"><p class="feed-empty">Loading approved posts…</p></div>
+          <div class="feed-heading"><h3 data-i18n="approvedMoments">Approved moments</h3><span class="sticker sticker-mint">♡ COMMUNITY</span></div>
+          <div id="community-feed" class="community-feed" aria-live="polite"><p class="feed-empty" data-i18n="loadingPosts">Loading approved posts…</p></div>
         </div>
       </div>
     </section>

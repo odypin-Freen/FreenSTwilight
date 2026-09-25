@@ -1,7 +1,7 @@
-
 .admin-main { min-height: 65vh; }
 .admin-title { margin: 0; font: 700 42px/1.1 "Playfair Display",serif; }
 .login-form { max-width: 480px; }
+.text-button { display:block; margin:14px auto 0; padding:8px 12px; border:0; background:transparent; color:var(--ink); font:700 12px "DM Sans",sans-serif; letter-spacing:.08em; text-decoration:underline; cursor:pointer; }
 .review-panel { margin-top: 48px; }
 .review-heading { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:20px; }
 .review-heading h2 { font-size:32px; }

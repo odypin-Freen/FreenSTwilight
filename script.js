@@ -39,7 +39,7 @@
       consent: "Entiendo que mi foto y mi mensaje serán públicos si se aprueban.",
       sendReview: "ENVIAR PARA REVISIÓN", privateUntilApproval: "Tu publicación y foto serán privadas hasta que Ody las apruebe.",
       approvedMoments: "Momentos aprobados", loadingPosts: "Cargando publicaciones aprobadas…",
-      changeLanguage: "Cambiar el idioma a inglés"
+      changeLanguage: "Cambiar el idioma a tailandés"
     },
     th: {
       pageTitle: "FREEN — แฟนเพจโดย Ody",

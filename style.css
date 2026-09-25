@@ -150,3 +150,7 @@ footer small a { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 800px) { .community-layout { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .community-feed { grid-template-columns: 1fr 1fr; gap: 12px; } .post-form { padding: 17px; } .feed-heading { align-items: flex-start; flex-direction: column; } }
 @media (max-width: 380px) { .community-feed { grid-template-columns: 1fr; } }
+
+.language-toggle { flex: 0 0 auto; padding: 8px 11px; border: 2px solid var(--line); border-radius: 999px; background: var(--yellow); color: var(--ink); font: 800 11px "DM Sans", sans-serif; letter-spacing: .06em; cursor: pointer; transition: transform .2s, box-shadow .2s; box-shadow: 3px 3px 0 var(--ink); }
+.language-toggle:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+@media (max-width: 800px) { .site-header { flex-wrap: wrap; gap: 10px; } .site-header nav { order: 3; width: 100%; justify-content: center; } }

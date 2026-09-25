@@ -3,6 +3,7 @@
   const translations = {
     en: {
       pageTitle: "FREEN — Fan Page by Ody",
+      fanPage: "FAN PAGE", galleryHeading: "Gallery", featured: "♡ FEATURED ♡", communityHeading: "Community", communitySticker: "♡ COMMUNITY", linksHeading: "Favorite Links", footerCredit: "Made with ♡ · Ody’s fan project ·", admin: "Admin",
       navLabel: "Main navigation",
       navVideo: "Video", navGallery: "Gallery", navCommunity: "Community", navLinks: "Links",
       eyebrow: "A FAN PAGE MADE WITH LOVE",
@@ -22,6 +23,7 @@
     },
     es: {
       pageTitle: "FREEN — Página de fans de Ody",
+      fanPage: "PÁGINA DE FANS", galleryHeading: "Galería", featured: "♡ DESTACADO ♡", communityHeading: "Comunidad", communitySticker: "♡ COMUNIDAD", linksHeading: "Enlaces favoritos", footerCredit: "Hecho con ♡ · Proyecto de fans de Ody ·", admin: "Administración",
       navLabel: "Navegación principal",
       navVideo: "Video", navGallery: "Galería", navCommunity: "Comunidad", navLinks: "Enlaces",
       eyebrow: "UNA PÁGINA DE FANS HECHA CON AMOR",

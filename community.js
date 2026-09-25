@@ -59,7 +59,7 @@ if (!configReady) {
   showSetupMessage();
   form?.querySelectorAll("input, textarea, button").forEach((control) => { control.disabled = true; });
 } else {
-  const endpoint = `${config.url.replace(/\\/$/, "")}/functions/v1`;
+  const endpoint = `${config.url.replace(/\/$/, "")}/functions/v1`;
 
   async function loadApprovedPosts() {
     try {

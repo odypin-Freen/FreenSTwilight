@@ -416,3 +416,10 @@ body {
   object-fit: contain;
   background: #fff8fc;
 }
+
+
+/* Fill the hero frame and bias the crop toward faces and upper bodies. */
+.hero-art img {
+  object-fit: cover;
+  object-position: center 28%;
+}

@@ -19,7 +19,7 @@
       consent: "I understand my photo and message will be visible publicly if approved.",
       sendReview: "SEND FOR REVIEW", privateUntilApproval: "Your post and photo stay private until approved by Ody.",
       approvedMoments: "Approved moments", loadingPosts: "Loading approved posts…",
-      changeLanguage: "Change language to Spanish"
+      changeLanguage: "Change language to Spanish", languageGroup: "Choose language"
     },
     es: {
       pageTitle: "FREEN — Página de fans de Ody",
@@ -39,7 +39,7 @@
       consent: "Entiendo que mi foto y mi mensaje serán públicos si se aprueban.",
       sendReview: "ENVIAR PARA REVISIÓN", privateUntilApproval: "Tu publicación y foto serán privadas hasta que Ody las apruebe.",
       approvedMoments: "Momentos aprobados", loadingPosts: "Cargando publicaciones aprobadas…",
-      changeLanguage: "Cambiar el idioma a tailandés"
+      changeLanguage: "Cambiar el idioma a tailandés", languageGroup: "Selecciona el idioma"
     },
     th: {
       pageTitle: "FREEN — แฟนเพจโดย Ody",
@@ -58,11 +58,11 @@
       consent: "ฉันเข้าใจว่ารูปและข้อความของฉันจะเผยแพร่ต่อสาธารณะหากได้รับอนุมัติ",
       sendReview: "ส่งให้ตรวจสอบ", privateUntilApproval: "โพสต์และรูปของคุณจะยังเป็นส่วนตัวจนกว่า Ody จะอนุมัติ",
       approvedMoments: "ช่วงเวลาที่อนุมัติแล้ว", loadingPosts: "กำลังโหลดโพสต์ที่อนุมัติแล้ว…",
-      changeLanguage: "เปลี่ยนภาษาเป็นอังกฤษ"
+      changeLanguage: "เปลี่ยนภาษาเป็นอังกฤษ", languageGroup: "เลือกภาษา"
     }
   };
   const root = document.documentElement;
-  const toggle = document.querySelector("#language-toggle");
+  const languageButtons = document.querySelectorAll(".language-option");
   const applyLanguage = (language) => {
     const lang = translations[language] ? language : "en";
     const words = translations[lang];
@@ -80,18 +80,18 @@
       const value = words[element.dataset.i18nAria];
       if (value) element.setAttribute("aria-label", value);
     });
-    if (toggle) {
-      toggle.textContent = ({ en: "ES", es: "TH", th: "EN" })[lang];
-      toggle.setAttribute("aria-pressed", String(lang !== "en"));
-      toggle.setAttribute("aria-label", words.changeLanguage);
-    }
+    languageButtons.forEach((button) => {
+      const selected = button.dataset.language === lang;
+      button.setAttribute("aria-pressed", String(selected));
+      button.classList.toggle("is-active", selected);
+    });
     localStorage.setItem("freen-language", lang);
     document.dispatchEvent(new CustomEvent("freen-language-change", { detail: { language: lang } }));
   };
   window.freenTranslate = (key) => translations[root.lang]?.[key] || translations.en[key];
   const savedLanguage = localStorage.getItem("freen-language");
   applyLanguage(translations[savedLanguage] ? savedLanguage : "en");
-  toggle?.addEventListener("click", () => applyLanguage(({ en: "es", es: "th", th: "en" })[root.lang] || "en"));
+  languageButtons.forEach((button) => button.addEventListener("click", () => applyLanguage(button.dataset.language)));
 })();
 
 document.querySelectorAll('a[target="_blank"]').forEach((link) => {

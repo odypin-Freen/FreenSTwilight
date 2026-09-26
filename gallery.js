@@ -22,6 +22,7 @@
   const chooser = document.createElement("div");
   chooser.className = "gallery-collections";
   chooser.setAttribute("aria-label", "Photo collections");
+  explorer.append(chooser);
   const prompt = document.createElement("p");
   prompt.className = "gallery-collections-prompt";
   chooser.append(prompt);

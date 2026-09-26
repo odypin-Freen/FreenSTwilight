@@ -696,3 +696,17 @@ body {
   }
   .gallery-lightbox-close { top: 14px; right: 14px; }
 }
+
+
+.footer-note {
+  max-width: 780px;
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+@media (max-width: 600px) {
+  .footer-note { font-size: 13px; line-height: 1.65; }
+}

@@ -405,3 +405,14 @@ body {
   text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 var(--lavender);
   transform: rotate(-2deg);
 }
+
+
+/* Keep the full composition visible in every rotating hero photo. */
+.hero-art img {
+  width: 100%;
+  height: clamp(280px, 42vw, 500px);
+  min-height: 0;
+  max-height: none;
+  object-fit: contain;
+  background: #fff8fc;
+}

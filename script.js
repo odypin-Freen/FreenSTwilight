@@ -108,7 +108,11 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
   const galleryImages = [...document.querySelectorAll(".gallery-grid img")];
   if (!heroImage || galleryImages.length < 2) return;
 
-  const photos = [...new Set(galleryImages.map((image) => image.getAttribute("src")).filter(Boolean))]
+  // Five evenly spaced gallery photos, keeping the hero rotation concise.
+  const heroPhotoIndexes = [0, 6, 12, 18, 24];
+  const photos = [...new Set(heroPhotoIndexes
+    .map((photoIndex) => galleryImages[photoIndex]?.getAttribute("src"))
+    .filter(Boolean))]
     .filter((src) => new URL(src, document.baseURI).href !== new URL(heroImage.getAttribute("src"), document.baseURI).href);
   if (!photos.length) return;
 

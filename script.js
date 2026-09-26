@@ -61,7 +61,6 @@
       changeLanguage: "เปลี่ยนภาษาเป็นอังกฤษ"
     }
   };
-  };
   const root = document.documentElement;
   const toggle = document.querySelector("#language-toggle");
   const applyLanguage = (language) => {

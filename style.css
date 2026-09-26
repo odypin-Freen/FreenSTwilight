@@ -560,3 +560,32 @@ body {
   border: 0;
   border-radius: 12px;
 }
+
+.post-translate-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-top: 11px;
+  padding: 7px 11px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--mint);
+  box-shadow: 2px 2px 0 var(--ink);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.post-translate-link:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--ink);
+}
+.post-translate-link:focus-visible {
+  outline: 3px solid var(--lavender);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-translate-link { transition: none; }
+}

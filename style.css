@@ -503,7 +503,15 @@ body {
   0%, 100% { transform: translateY(0) rotate(-3deg); }
   50% { transform: translateY(-7px) rotate(3deg); }
 }
-@media (max-width: 1279px) {
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .pet-doodle { width: 68px; opacity: .72; }
+  .hero > .pet-bunny { left: 4px; width: 76px; }
+  #video > .pet-doodle { right: 4px; width: 74px; }
+  #gallery > .pet-doodle { left: 4px; width: 66px; }
+  #community > .pet-doodle { right: 4px; width: 72px; }
+  #links > .pet-doodle { left: 4px; width: 68px; }
+}
+@media (max-width: 1023px) {
   .pet-doodle { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {

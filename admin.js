@@ -8,6 +8,8 @@ const loginStatus = document.querySelector("#login-status");
 const panel = document.querySelector("#review-panel");
 const list = document.querySelector("#review-list");
 const count = document.querySelector("#review-count");
+const approvedList = document.querySelector("#approved-list");
+const approvedCount = document.querySelector("#approved-count");
 
 if (!ready) {
   loginStatus.textContent = "Connect the Supabase project in supabase-config.js before using the review dashboard.";
@@ -30,14 +32,24 @@ if (!ready) {
     if (!session) return;
     loginForm.hidden = true;
     panel.hidden = false;
-    const { data, error } = await supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "pending").order("created_at", { ascending: true });
+    const [{ data, error }, { data: approved, error: approvedError }] = await Promise.all([
+      supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "pending").order("created_at", { ascending: true }),
+      supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "approved").order("created_at", { ascending: false }).limit(60)
+    ]);
     if (error) {
       list.textContent = "Could not load the queue. Check that this account is listed as a community admin.";
       count.textContent = "";
       return;
     }
     list.replaceChildren();
+    approvedList.replaceChildren();
     count.textContent = data.length + " awaiting review";
+    if (approvedError) {
+      approvedCount.textContent = "Could not load approved posts.";
+      say("The pending queue loaded, but approved posts could not be loaded.", "error");
+    } else {
+      await renderApprovedPosts(approved || []);
+    }
     if (!data.length) { const empty = document.createElement("p"); empty.className = "review-message"; empty.textContent = "The queue is clear. New fan submissions will appear here."; list.append(empty); return; }
     for (const post of data) {
       const { data: signed } = await supabase.storage.from("community-pending").createSignedUrl(post.image_path, 600);
@@ -54,6 +66,53 @@ if (!ready) {
       reject.addEventListener("click", () => review(post, "rejected", approve, reject));
       actions.append(approve, reject); details.append(author, date, message, actions); article.append(image, details); list.append(article);
     }
+  }
+
+  async function renderApprovedPosts(posts) {
+    const displayed = [];
+    for (const post of posts) {
+      const { data: signed } = await supabase.storage.from("community-pending").createSignedUrl(post.image_path, 600);
+      if (signed?.signedUrl) displayed.push({ post, imageUrl: signed.signedUrl });
+    }
+    approvedCount.textContent = displayed.length + " approved and displaying on the page (latest 60)";
+    if (!displayed.length) {
+      const empty = document.createElement("p");
+      empty.className = "review-message";
+      empty.textContent = "There are no approved posts currently displaying.";
+      approvedList.append(empty);
+      return;
+    }
+    for (const { post, imageUrl } of displayed) {
+      const article = document.createElement("article"); article.className = "review-card";
+      const image = document.createElement("img"); image.src = imageUrl; image.alt = "Approved community photo";
+      const details = document.createElement("div");
+      const author = document.createElement("h3"); author.textContent = post.display_name || "Anonymous fan";
+      const message = document.createElement("p"); message.textContent = post.message;
+      const date = document.createElement("p"); date.className = "review-meta"; date.textContent = new Date(post.created_at).toLocaleString();
+      const actions = document.createElement("div"); actions.className = "review-actions";
+      const remove = document.createElement("button"); remove.className = "button reject-button"; remove.type = "button"; remove.textContent = "REMOVE FROM PAGE";
+      remove.addEventListener("click", () => removeApproved(post, remove));
+      actions.append(remove); details.append(author, date, message, actions); article.append(image, details); approvedList.append(article);
+    }
+  }
+
+  async function removeApproved(post, button) {
+    if (!window.confirm("Remove this approved post from the public page?")) return;
+    button.disabled = true;
+    const { error } = await supabase.from("community_posts")
+      .update({ status: "rejected", reviewed_at: new Date().toISOString() })
+      .eq("id", post.id)
+      .eq("status", "approved");
+    if (error) {
+      say("Could not remove the post from the page. Check admin permissions and try again.", "error");
+      button.disabled = false;
+      return;
+    }
+    const { error: storageError } = await supabase.storage.from("community-pending").remove([post.image_path]);
+    say(storageError
+      ? "Post removed from the public page. Its private photo could not be deleted."
+      : "Post removed from the public page and its photo deleted.", storageError ? "error" : "success");
+    await showQueue();
   }
 
   async function review(post, decision, approve, reject) {

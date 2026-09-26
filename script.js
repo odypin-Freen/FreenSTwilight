@@ -160,3 +160,43 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     sticker.textContent = shuffledLabels[index];
   });
 })();
+
+
+// Open gallery photos at full size in an accessible modal viewer.
+(() => {
+  const dialog = document.querySelector("#gallery-lightbox");
+  const enlargedPhoto = dialog?.querySelector("img");
+  const closeButton = dialog?.querySelector(".gallery-lightbox-close");
+  if (!dialog || !enlargedPhoto || !closeButton) return;
+
+  const galleryPhotos = [...document.querySelectorAll("#gallery .gallery-card img")];
+  galleryPhotos.forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-haspopup", "dialog");
+    image.setAttribute("aria-label", `Enlarge photo: ${image.alt}`);
+  });
+
+  const openPhoto = (image) => {
+    enlargedPhoto.src = image.currentSrc || image.src;
+    enlargedPhoto.alt = image.alt;
+    dialog.showModal();
+    closeButton.focus();
+  };
+  document.addEventListener("click", (event) => {
+    const image = event.target.closest("#gallery .gallery-card img");
+    if (image) openPhoto(image);
+  });
+  document.addEventListener("keydown", (event) => {
+    const image = event.target.closest?.("#gallery .gallery-card img");
+    if (image && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      openPhoto(image);
+    }
+  });
+  closeButton.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener("close", () => enlargedPhoto.removeAttribute("src"));
+})();

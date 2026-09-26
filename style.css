@@ -423,3 +423,15 @@ body {
   object-fit: cover;
   object-position: center 28%;
 }
+
+
+/* Let the frame follow each photo's own proportions. */
+.hero-art img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  min-height: 0;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}

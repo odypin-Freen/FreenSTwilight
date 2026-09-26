@@ -393,3 +393,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .sparkle { animation: none; }
 }
+
+
+/* Sharper, more readable hero wordmark. */
+.hero-copy h1 {
+  font: 700 clamp(66px, 10.5vw, 132px)/.95 "Fredoka", "DM Sans", sans-serif;
+  letter-spacing: -.055em;
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 var(--lavender);
+  transform: rotate(-2deg);
+}

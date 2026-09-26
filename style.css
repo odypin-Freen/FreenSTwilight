@@ -534,3 +534,29 @@ body {
   border-radius: 14px;
   box-shadow: 3px 4px 0 var(--ink);
 }
+
+.spotify-player {
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding: 18px;
+  border: 2px solid var(--line);
+  border-radius: 18px 24px 17px 22px;
+  background: var(--paper);
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.spotify-player-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.spotify-player-heading strong,
+.spotify-player-heading small { display: block; }
+.spotify-player-heading small { margin-top: 3px; color: var(--muted); }
+.spotify-player iframe {
+  display: block;
+  width: 100%;
+  min-height: 352px;
+  border: 0;
+  border-radius: 12px;
+}

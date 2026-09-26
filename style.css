@@ -589,3 +589,46 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .post-translate-link { transition: none; }
 }
+
+.gallery-explorer { margin-top: 8px; }
+.gallery-collections-prompt { margin: 0 0 18px; color: var(--muted); }
+.gallery-collections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.gallery-collection-card {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); grid-template-rows: 1fr auto;
+  align-items: end; gap: 8px 20px; width: 100%; padding: 16px;
+  border: 2px solid var(--line); border-radius: 22px; background: var(--paper);
+  color: var(--ink); text-align: left; font: inherit; cursor: pointer;
+  box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease;
+}
+.gallery-collection-card:hover, .gallery-collection-card:focus-visible {
+  transform: translateY(-5px) rotate(-.5deg); box-shadow: 9px 11px 0 var(--ink);
+}
+.gallery-collection-card:focus-visible, .gallery-back-button:focus-visible { outline: 3px solid var(--hot-pink); outline-offset: 4px; }
+.gallery-collection-preview {
+  grid-row: 1 / 3; display: block; width: 100%; aspect-ratio: 4 / 5;
+  object-fit: cover; border: 2px solid var(--line); border-radius: 14px; background: #f4eafa;
+}
+.gallery-collection-title { align-self: end; font: 700 clamp(22px, 3vw, 34px)/1.1 "Playfair Display", serif; }
+.gallery-collection-count { align-self: start; color: var(--muted); font-size: 13px; }
+.gallery-collection-view[hidden], .gallery-collections[hidden] { display: none; }
+.gallery-view-heading { display: flex; align-items: center; gap: 16px; margin: 0 0 24px; }
+.gallery-collection-heading { margin: 0; font: 700 34px/1.1 "Playfair Display", serif; }
+.gallery-back-button {
+  display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px;
+  border: 2px solid var(--line); border-radius: 999px; background: var(--mint);
+  color: var(--ink); font: 800 12px "DM Sans", sans-serif; cursor: pointer;
+}
+.gallery-back-button:hover { background: var(--yellow); }
+@media (max-width: 700px) {
+  .gallery-collections { grid-template-columns: 1fr; gap: 18px; }
+  .gallery-collection-card { grid-template-columns: 120px minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .gallery-collection-card { grid-template-columns: 96px minmax(0, 1fr); gap: 8px 14px; padding: 12px; }
+  .gallery-collection-title { font-size: 22px; }
+  .gallery-view-heading { align-items: flex-start; flex-direction: column; }
+  .gallery-collection-heading { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-collection-card { transition: none; }
+}

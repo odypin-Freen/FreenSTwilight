@@ -304,3 +304,5 @@ main, footer { position: relative; z-index: 1; }
 
 html[lang="th"] body { font-family: "Noto Sans Thai", "DM Sans", sans-serif; }
 html[lang="th"] h1, html[lang="th"] h2, html[lang="th"] .brand, html[lang="th"] .feed-heading h3 { font-family: "Noto Sans Thai", "Fredoka", sans-serif; }
+
+.gallery-label { text-transform: none; }

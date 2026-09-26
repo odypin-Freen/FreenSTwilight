@@ -4,6 +4,7 @@
     en: {
       pageTitle: "FREEN — Fan Page by Ody",
       fanPage: "FAN PAGE", galleryHeading: "Gallery", featured: "♡ FEATURED ♡", communityHeading: "Community", communitySticker: "♡ COMMUNITY", linksHeading: "Favorite Links", footerCredit: "Made with ♡ · Ody’s fan project ·", admin: "Admin",
+      footerMessage: "I created this page so we can have a place to share our memories of the CDMX 2026 event graciously made happen for Mexican Fans. I hope you enjoy this space and respectfully post your thoughts and pictures. Profanity and hate will not be tolerated; this space is only for love for the fandom and for Freen.",
       navLabel: "Main navigation",
       navVideo: "Video", navGallery: "Gallery", navCommunity: "Community", navLinks: "Links",
       eyebrow: "A FAN PAGE MADE WITH LOVE",
@@ -24,6 +25,7 @@
     es: {
       pageTitle: "FREEN — Página de fans de Ody",
       fanPage: "PÁGINA DE FANS", galleryHeading: "Galería", featured: "♡ DESTACADO ♡", communityHeading: "Comunidad", communitySticker: "♡ COMUNIDAD", linksHeading: "Enlaces favoritos", footerCredit: "Hecho con ♡ · Proyecto de fans de Ody ·", admin: "Administración",
+      footerMessage: "Creé esta página para que tengamos un lugar donde compartir nuestros recuerdos del evento CDMX 2026, hecho posible generosamente para los fans mexicanos. Espero que disfrutes este espacio y compartas tus pensamientos y fotos con respeto. No se tolerarán las groserías ni el odio; este espacio es solo para el amor por el fandom y por Freen.",
       navLabel: "Navegación principal",
       navVideo: "Video", navGallery: "Galería", navCommunity: "Comunidad", navLinks: "Enlaces",
       eyebrow: "UNA PÁGINA DE FANS HECHA CON AMOR",
@@ -44,6 +46,7 @@
     th: {
       pageTitle: "FREEN — แฟนเพจโดย Ody",
       fanPage: "แฟนเพจ", galleryHeading: "แกลเลอรี", featured: "♡ ไฮไลต์ ♡", communityHeading: "ชุมชน", communitySticker: "♡ ชุมชน", linksHeading: "ลิงก์โปรด", footerCredit: "สร้างด้วย ♡ · โปรเจกต์แฟนคลับของ Ody ·", admin: "ผู้ดูแล",
+      footerMessage: "ฉันสร้างหน้านี้ขึ้นเพื่อให้เรามีพื้นที่แบ่งปันความทรงจำจากงาน CDMX 2026 ที่จัดขึ้นอย่างเอื้อเฟื้อเพื่อแฟนๆ ชาวเม็กซิกัน หวังว่าคุณจะเพลิดเพลินกับพื้นที่นี้ และแบ่งปันความคิดกับรูปภาพอย่างให้เกียรติกัน จะไม่ยอมรับคำหยาบคายหรือความเกลียดชัง พื้นที่นี้มีไว้เพื่อความรักที่มีต่อแฟนด้อมและ Freen เท่านั้น",
       navLabel: "เมนูหลัก", navVideo: "วิดีโอ", navGallery: "แกลเลอรี", navCommunity: "ชุมชน", navLinks: "ลิงก์",
       eyebrow: "แฟนเพจที่สร้างขึ้นด้วยความรัก",
       tagline: "มุมเล็กๆ ที่เต็มไปด้วยความรักและมอบให้ Freen Sarocha Chankimha",

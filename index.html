@@ -24,7 +24,11 @@
       <a href="#community" data-i18n="navCommunity">Community</a>
       <a href="#links" data-i18n="navLinks">Links</a>
     </nav>
-    <button id="language-toggle" class="language-toggle" type="button" aria-label="Change language to Spanish" aria-pressed="false">ES</button>
+    <div class="language-switcher" role="group" aria-label="Choose language" data-i18n-aria="languageGroup">
+      <button class="language-option" type="button" data-language="en" aria-pressed="true">English</button>
+      <button class="language-option" type="button" data-language="es" aria-pressed="false">Español</button>
+      <button class="language-option" type="button" data-language="th" aria-pressed="false">ไทย</button>
+    </div>
   </header>
 
   <main id="top">

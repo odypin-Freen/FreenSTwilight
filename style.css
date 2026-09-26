@@ -334,3 +334,62 @@ html[lang="th"] h1, html[lang="th"] h2, html[lang="th"] .brand, html[lang="th"] 
 html[lang="th"] .language-option { font-family: "Noto Sans Thai", sans-serif; }
 @media (max-width: 800px) { .site-header .language-switcher { margin-left: auto; } }
 @media (max-width: 420px) { .language-option { padding: 6px 7px; font-size: 10px; } }
+
+
+/* Brighter color washes with soft contrast behind the content. */
+body {
+  background:
+    radial-gradient(ellipse at 4% 12%, rgba(255,78,155,.27), transparent 19rem),
+    radial-gradient(ellipse at 96% 20%, rgba(139,105,255,.25), transparent 22rem),
+    radial-gradient(ellipse at 90% 77%, rgba(71,218,188,.22), transparent 21rem),
+    radial-gradient(ellipse at 18% 86%, rgba(255,201,64,.19), transparent 20rem),
+    radial-gradient(ellipse at 53% 47%, rgba(255,255,255,.7), transparent 32rem),
+    var(--cream);
+}
+.hero-copy::before {
+  opacity: .78;
+  background:
+    radial-gradient(ellipse at 24% 35%, rgba(255,98,167,.34) 0 23%, transparent 24%),
+    radial-gradient(ellipse at 70% 60%, rgba(87,220,190,.38) 0 28%, transparent 29%),
+    radial-gradient(ellipse at 55% 28%, rgba(160,126,255,.36) 0 31%, transparent 32%);
+}
+#video .section-title > span { background: var(--pink); }
+#gallery .section-title > span { background: var(--lavender); }
+#community .section-title > span { background: var(--yellow); }
+#links .section-title > span { background: var(--mint); }
+#video .video-card { border-top: 5px solid var(--pink); }
+#community .post-form { border-top: 5px solid var(--mint); }
+.link-card:nth-child(4n + 1) { background: #fff5f8; }
+.link-card:nth-child(4n + 2) { background: #f4f0ff; }
+.link-card:nth-child(4n + 3) { background: #f0fbf7; }
+.link-card:nth-child(4n) { background: #fff9e8; }
+
+/* Floating emoji accents sit behind the content and never block clicks. */
+.sparkle {
+  z-index: 0;
+  opacity: .95;
+  user-select: none;
+  animation: doodle-float 7s ease-in-out infinite;
+}
+.sparkle-heart { animation-duration: 8.5s; }
+.sparkle-star { animation-duration: 6.5s; }
+.sparkle-tulip { animation-duration: 9s; }
+.s1 { left: 3%; top: 28%; }
+.s2 { right: 3%; top: 18%; animation-delay: -2s; }
+.s3 { right: 7%; bottom: 20%; animation-delay: -3.5s; }
+.s4 { left: 7%; top: 58%; animation-delay: -1s; }
+.s5 { right: 7%; top: 68%; animation-delay: -4s; }
+.s6 { left: 3%; bottom: 16%; animation-delay: -2.8s; }
+.s7 { right: 12%; bottom: 48%; animation-delay: -5s; }
+.s8 { left: 14%; top: 8%; animation-delay: -3s; }
+@keyframes doodle-float {
+  0%, 100% { transform: translate3d(0,0,0) rotate(-7deg) scale(1); }
+  50% { transform: translate3d(0,-13px,0) rotate(8deg) scale(1.08); }
+}
+@media (max-width: 800px) {
+  .sparkle { font-size: 26px; }
+  .s4, .s7 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sparkle { animation: none; }
+}

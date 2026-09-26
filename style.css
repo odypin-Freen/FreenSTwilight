@@ -306,3 +306,31 @@ html[lang="th"] body { font-family: "Noto Sans Thai", "DM Sans", sans-serif; }
 html[lang="th"] h1, html[lang="th"] h2, html[lang="th"] .brand, html[lang="th"] .feed-heading h3 { font-family: "Noto Sans Thai", "Fredoka", sans-serif; }
 
 .gallery-label { text-transform: none; }
+
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.language-option {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 700 11px "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.language-option:hover { transform: translateY(-1px); background: #ffe5f1; }
+.language-option.is-active { background: var(--pink); box-shadow: 2px 2px 0 var(--ink); }
+.language-option:focus-visible { outline: 3px solid var(--lavender); outline-offset: 2px; }
+html[lang="th"] .language-option { font-family: "Noto Sans Thai", sans-serif; }
+@media (max-width: 800px) { .site-header .language-switcher { margin-left: auto; } }
+@media (max-width: 420px) { .language-option { padding: 6px 7px; font-size: 10px; } }

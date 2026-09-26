@@ -35,3 +35,8 @@
   border-radius: 18px;
   box-shadow: 4px 5px 0 var(--ink);
 }
+
+.approved-posts { margin-top: 44px; padding-top: 30px; border-top: 2px solid var(--line); }
+.approved-posts .review-heading { margin-bottom: 18px; }
+.approved-posts .review-heading h2 { margin: 0; }
+.approved-posts .reject-button { background: #ffacd1; }

@@ -136,3 +136,24 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
 
   window.setInterval(showNextPhoto, 10000);
 })();
+
+
+// Give every gallery photo a decorated label in a shuffled order each visit.
+(() => {
+  const labels = ["🌷 Tulip", "Freen ❤️", "Suey Mak 😍", "Sarooo ❤️"];
+  const stickers = [...document.querySelectorAll(".gallery-label")];
+  const shuffledLabels = [];
+
+  while (shuffledLabels.length < stickers.length) {
+    const batch = [...labels];
+    for (let i = batch.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [batch[i], batch[j]] = [batch[j], batch[i]];
+    }
+    shuffledLabels.push(...batch);
+  }
+
+  stickers.forEach((sticker, index) => {
+    sticker.textContent = shuffledLabels[index];
+  });
+})();

@@ -477,3 +477,35 @@ body {
   .gallery-grid { gap: 10px; }
   .gallery-card { padding: 8px; }
 }
+
+
+/* Bunny and dachshund illustration stickers around the desktop page */
+.hero, .section { position: relative; isolation: isolate; }
+.hero-art { z-index: 1; }
+.section > :not(.pet-doodle) { position: relative; z-index: 1; }
+.pet-doodle {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  width: 92px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(2px 4px 0 rgba(33,21,43,.10));
+  animation: pet-bob 7s ease-in-out infinite;
+}
+.hero > .pet-bunny { left: -62px; bottom: 4px; width: 104px; animation-delay: -1.4s; }
+#video > .pet-doodle { right: -54px; top: 110px; width: 102px; animation-delay: -3.2s; }
+#gallery > .pet-doodle { left: -55px; top: 105px; width: 88px; animation-delay: -2.3s; }
+#community > .pet-doodle { right: -54px; top: 56px; width: 96px; animation-delay: -4.1s; }
+#links > .pet-doodle { left: -55px; bottom: 6px; width: 90px; animation-delay: -2.8s; }
+@keyframes pet-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-7px) rotate(3deg); }
+}
+@media (max-width: 1279px) {
+  .pet-doodle { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-doodle { animation: none; }
+}

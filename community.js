@@ -9,6 +9,7 @@ const configReady = config.url && config.publishableKey && !config.url.includes(
 
 const messages = {
   en: {
+    translatePost: "Translate to English with Google Translate",
     setup: "Community posts will appear here once the site is connected to its moderation service.",
     inactive: "Submissions are not active yet. The site owner needs to finish the Supabase setup first.",
     loadError: "Could not load approved posts.",
@@ -23,6 +24,7 @@ const messages = {
     tryAgain: "Your post could not be submitted. Please try again."
   },
   es: {
+    translatePost: "Traducir al español con Google Translate",
     setup: "Las publicaciones de la comunidad aparecerán aquí cuando el sitio se conecte al servicio de moderación.",
     inactive: "Los envíos aún no están activos. La persona administradora debe terminar la configuración de Supabase.",
     loadError: "No se pudieron cargar las publicaciones aprobadas.",
@@ -37,6 +39,7 @@ const messages = {
     tryAgain: "No se pudo enviar tu publicación. Inténtalo de nuevo."
   },
   th: {
+    translatePost: "แปลเป็นภาษาไทยด้วย Google Translate",
     setup: "โพสต์จากชุมชนจะแสดงที่นี่เมื่อเว็บไซต์เชื่อมต่อกับระบบตรวจสอบแล้ว",
     inactive: "ขณะนี้ยังไม่เปิดรับโพสต์ ผู้ดูแลเว็บไซต์ต้องตั้งค่า Supabase ให้เสร็จก่อน",
     loadError: "โหลดโพสต์ที่อนุมัติแล้วไม่สำเร็จ",
@@ -52,6 +55,14 @@ const messages = {
   }
 };
 const t = (key) => (messages[document.documentElement.lang]?.[key] || messages.en[key]);
+function googleTranslateUrl(text, language = document.documentElement.lang) {
+  const url = new URL("https://translate.google.com/");
+  url.searchParams.set("sl", "auto");
+  url.searchParams.set("tl", ["en", "es", "th"].includes(language) ? language : "en");
+  url.searchParams.set("text", text);
+  url.searchParams.set("op", "translate");
+  return url.href;
+}
 
 function setStatus(message, state = "info") {
   if (!status) return;
@@ -103,7 +114,14 @@ if (!configReady) {
         const message = document.createElement("p");
         message.className = "post-message";
         message.textContent = post.message;
-        caption.append(author, message);
+        const translateLink = document.createElement("a");
+        translateLink.className = "post-translate-link";
+        translateLink.href = googleTranslateUrl(post.message);
+        translateLink.target = "_blank";
+        translateLink.rel = "noopener noreferrer";
+        translateLink.dataset.translateText = post.message;
+        translateLink.textContent = t("translatePost");
+        caption.append(author, message, translateLink);
         card.append(image, caption);
         feed.append(card);
       }
@@ -144,6 +162,10 @@ if (!configReady) {
 }
 
 document.addEventListener("freen-language-change", () => {
+  feed?.querySelectorAll(".post-translate-link").forEach((link) => {
+    link.href = googleTranslateUrl(link.dataset.translateText || "");
+    link.textContent = t("translatePost");
+  });
   const message = feed?.querySelector("[data-community-message]");
   if (message) message.textContent = t(message.dataset.communityMessage);
   if (status?.dataset.state === "info" || status?.dataset.state === "success") {

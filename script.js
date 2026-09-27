@@ -3,7 +3,7 @@
   const translations = {
     en: {
       pageTitle: "FREEN — Fan Page by Ody",
-      fanPage: "FAN PAGE", galleryHeading: "Gallery", featured: "♡ FEATURED ♡", communityHeading: "Community", communitySticker: "♡ COMMUNITY", linksHeading: "Favorite Links", footerCredit: "Made with ♡ · Ody’s fan project ·", admin: "Admin",
+      fanPage: "FAN PAGE", galleryHeading: "Gallery", featured: "♡ FEATURED ♡", communityHeading: "Community", communitySticker: "♡ COMMUNITY", linksHeading: "Favorite Links", footerCredit: "Made with ♡ · Fan project ·", admin: "Admin",
       footerMessage: "I created this page so we can have a place to share our memories of the CDMX 2026 event graciously made happen for Mexican Fans. I hope you enjoy this space and respectfully post your thoughts and pictures. Profanity and hate will not be tolerated; this space is only for love for the fandom and for Freen.",
       footerDisclaimer: "I do not own the photos or music featured on this page or in the playlist. They are shared for fan appreciation only and are not used for commercial purposes.",
       navLabel: "Main navigation",
@@ -47,7 +47,7 @@
     },
     th: {
       pageTitle: "FREEN — แฟนเพจโดย Ody",
-      fanPage: "แฟนเพจ", galleryHeading: "แกลเลอรี", featured: "♡ ไฮไลต์ ♡", communityHeading: "ชุมชน", communitySticker: "♡ ชุมชน", linksHeading: "ลิงก์โปรด", footerCredit: "สร้างด้วย ♡ · โปรเจกต์แฟนคลับของ Ody ·", admin: "ผู้ดูแล",
+      fanPage: "แฟนเพจ", galleryHeading: "แกลเลอรี", featured: "♡ ไฮไลต์ ♡", communityHeading: "ชุมชน", communitySticker: "♡ ชุมชน", linksHeading: "ลิงก์โปรด", footerCredit: "สร้างด้วย ♡ · โปรเจกต์แฟนคลับ ·", admin: "ผู้ดูแล",
       footerMessage: "ฉันสร้างหน้านี้ขึ้นเพื่อให้เรามีพื้นที่แบ่งปันความทรงจำจากงาน CDMX 2026 ที่จัดขึ้นอย่างเอื้อเฟื้อเพื่อแฟนๆ ชาวเม็กซิกัน หวังว่าคุณจะเพลิดเพลินกับพื้นที่นี้ และแบ่งปันความคิดกับรูปภาพอย่างให้เกียรติกัน จะไม่ยอมรับคำหยาบคายหรือความเกลียดชัง พื้นที่นี้มีไว้เพื่อความรักที่มีต่อแฟนด้อมและ Freen เท่านั้น",
       footerDisclaimer: "ฉันไม่ได้เป็นเจ้าของภาพถ่ายหรือเพลงที่นำเสนอบนหน้านี้หรือในเพลย์ลิสต์ เนื้อหาเหล่านี้แบ่งปันเพื่อแสดงความรักต่อแฟนด้อมเท่านั้นและไม่ได้ใช้เพื่อวัตถุประสงค์ทางการค้า",
       navLabel: "เมนูหลัก", navVideo: "วิดีโอ", navGallery: "แกลเลอรี", navCommunity: "ชุมชน", navLinks: "ลิงก์",

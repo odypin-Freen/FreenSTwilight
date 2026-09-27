@@ -206,3 +206,37 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
   });
   dialog.addEventListener("close", () => enlargedPhoto.removeAttribute("src"));
 })();
+
+
+// Let visitors tap or keyboard-activate the floating flower, heart, star, and pet decorations.
+(() => {
+  const reactions = {
+    tulip: ["clicked-bloom", "clicked-twirl"],
+    heart: ["clicked-heart", "clicked-wiggle"],
+    star: ["clicked-twinkle", "clicked-twirl"],
+    bunny: ["clicked-hop", "clicked-wiggle"],
+    puppy: ["clicked-hop", "clicked-twirl"]
+  };
+  const allReactionClasses = [...new Set(Object.values(reactions).flat())];
+
+  document.querySelectorAll(".sparkle[data-floater], .pet-doodle[data-floater]").forEach((decoration) => {
+    let previous = "";
+    decoration.addEventListener("click", () => {
+      const options = reactions[decoration.dataset.floater] || reactions.star;
+      const choices = options.filter((name) => name !== previous);
+      const reaction = choices[Math.floor(Math.random() * choices.length)];
+      previous = reaction;
+      decoration.classList.remove(...allReactionClasses);
+      void decoration.offsetWidth;
+      decoration.classList.add(reaction);
+      window.setTimeout(() => decoration.classList.remove(reaction), 900);
+    });
+
+    decoration.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        decoration.click();
+      }
+    });
+  });
+})();

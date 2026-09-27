@@ -710,3 +710,12 @@ body {
 @media (max-width: 600px) {
   .footer-note { font-size: 13px; line-height: 1.65; }
 }
+
+
+.site-footer-signature {
+  display: block;
+  width: min(2in, 65vw);
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}

@@ -782,3 +782,29 @@ body {
   .sparkle.clicked-hop, .pet-doodle.clicked-hop,
   .sparkle.clicked-wiggle, .pet-doodle.clicked-wiggle { animation: none; }
 }
+
+
+/* Give the main FREEN banner a bold, colorful wordmark treatment. */
+.hero-copy h1 {
+  font-size: clamp(78px, 14.5vw, 176px);
+  letter-spacing: -.045em;
+  color: #ff4fa3;
+  -webkit-text-stroke: 2px var(--ink);
+  paint-order: stroke fill;
+  text-shadow:
+    3px 3px 0 #fff,
+    7px 7px 0 var(--hot-pink),
+    13px 13px 0 var(--lavender),
+    16px 18px 0 var(--ink);
+  transform: rotate(-3deg);
+}
+@media (max-width: 600px) {
+  .hero-copy h1 {
+    font-size: clamp(76px, 22vw, 112px);
+    text-shadow:
+      2px 2px 0 #fff,
+      5px 5px 0 var(--hot-pink),
+      9px 10px 0 var(--lavender),
+      11px 13px 0 var(--ink);
+  }
+}

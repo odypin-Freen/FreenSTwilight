@@ -852,3 +852,13 @@ body {
   .site-header nav { gap: 4px; font-size: 10px; }
   .site-header nav a { padding: 7px 6px; }
 }
+
+
+.footer-photo-caption {
+  margin: -5px 0 0;
+  color: var(--hot-pink);
+  font: 700 15px/1.3 "Playfair Display", serif;
+  letter-spacing: .035em;
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff;
+}

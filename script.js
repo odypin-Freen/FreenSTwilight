@@ -25,7 +25,7 @@
     },
     es: {
       pageTitle: "FREEN — Página de fans de Ody",
-      fanPage: "PÁGINA DE FANS", galleryHeading: "Galería", featured: "♡ DESTACADO ♡", communityHeading: "Comunidad", communitySticker: "♡ COMUNIDAD", linksHeading: "Enlaces favoritos", footerCredit: "Hecho con ♡ · Proyecto de fans de Ody ·", admin: "Administración",
+      fanPage: "PÁGINA DE FANS", galleryHeading: "Galería", featured: "♡ DESTACADO ♡", communityHeading: "Comunidad", communitySticker: "♡ COMUNIDAD", linksHeading: "Enlaces favoritos", footerCredit: "Hecho con ♡ · Proyecto de fans ·", admin: "Administración",
       footerMessage: "Creé esta página para que tengamos un lugar donde compartir nuestros recuerdos del evento CDMX 2026, hecho posible generosamente para los fans mexicanos. Espero que disfrutes este espacio y compartas tus pensamientos y fotos con respeto. No se tolerarán las groserías ni el odio; este espacio es solo para el amor por el fandom y por Freen.",
       footerDisclaimer: "No soy propietario de las fotos ni de la música que aparecen en esta página o en la lista de reproducción. Se comparten únicamente por aprecio al fandom y no con fines comerciales.",
       navLabel: "Navegación principal",

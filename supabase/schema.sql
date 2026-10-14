@@ -22,6 +22,7 @@ create table if not exists public.community_posts (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   display_name text not null default 'Anonymous fan' check (char_length(display_name) between 1 and 40),
+  email text check (email is null or char_length(email) between 3 and 254),
   message text not null check (char_length(message) between 2 and 500),
   image_path text not null,
   status text not null default 'pending' check (status in ('pending', 'approved', 'rejected')),

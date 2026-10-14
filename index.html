@@ -74,12 +74,15 @@
         <form id="post-form" class="post-form">
           <label for="post-name"><span data-i18n="yourName">Your name</span> <span data-i18n="optional">(optional)</span></label>
           <input id="post-name" name="name" maxlength="40" autocomplete="nickname" placeholder="Anonymous fan" data-i18n-placeholder="anonymous">
+          <label for="post-email" data-i18n="yourEmail">Your email</label>
+          <input id="post-email" name="email" type="email" maxlength="254" autocomplete="email" required placeholder="you@example.com" data-i18n-placeholder="emailPlaceholder">
+          <small class="form-hint" data-i18n="emailHint">Required for moderation follow-up. Your email will not appear with your public post.</small>
           <label for="post-message" data-i18n="yourMessage">Your message</label>
           <textarea id="post-message" name="message" maxlength="500" rows="4" required placeholder="Leave a kind message about the event…" data-i18n-placeholder="messagePlaceholder"></textarea>
           <label for="post-photo" data-i18n="eventPhoto">Event photo</label>
           <input id="post-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" required>
           <small class="form-hint" data-i18n="photoHint">JPG, PNG, or WebP · up to 6 MB. Please upload a photo you have permission to share.</small>
-          <label class="consent-row"><input id="post-consent" type="checkbox" required><span data-i18n="consent">I understand my photo and message will be visible publicly if approved.</span></label>
+          <label class="consent-row"><input id="post-consent" type="checkbox" required><span data-i18n="consent">I understand my email is required for moderation and will not appear publicly; my photo and message may be shown if approved.</span></label>
           <div class="website-field" aria-hidden="true"><label for="post-website">Website</label><input id="post-website" name="website" tabindex="-1" autocomplete="off"></div>
           <button class="button submit-button" type="submit"><span data-i18n="sendReview">SEND FOR REVIEW</span> <span aria-hidden="true">♡</span></button>
           <p id="post-status" class="post-status" role="status" aria-live="polite" data-i18n="privateUntilApproval">Your post and photo stay private until approved by Ody.</p>
@@ -148,7 +151,7 @@
   </main>
 
   <footer class="site-footer"><div>FREEN FAN PAGE</div><small><span data-i18n="footerCredit">Made with ♡ · Fan project ·</span> <a href="admin.html" data-i18n="admin">Admin</a> · <a href="#legal" data-i18n="navLegal">Legal Notice</a></small><p class="footer-note" data-i18n="footerMessage">I created this page so we can have a place to share our memories of the CDMX 2026 event graciously made happen for Mexican Fans. I hope you enjoy this space and respectfully post your thoughts and pictures. Profanity and hate will not be tolerated this space is only for love for the fandom and for Freen.</p><img class="site-footer-photo" src="images/footer/ody-and-puppy-4x4.jpg" alt="A person cuddling a puppy"><p class="footer-photo-caption">With Love from Ody</p><img class="site-footer-signature" src="images/footer/ody-signature.png" alt="Ody’s handwritten signature"></footer>
-  <script src="script.js?v=20261014-legal-section"></script>
+  <script src="script.js?v=20261014-required-email"></script>
   <script src="supabase-config.js"></script>
   <script type="module" src="community.js?v=20260926-community-translate"></script>
 </body>

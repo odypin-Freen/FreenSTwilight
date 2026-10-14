@@ -108,19 +108,17 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
 });
 
 
-// Rotate the hero photo through the gallery every 10 seconds.
+// Rotate the hero photo through five curated images every 10 seconds.
 (() => {
   const heroImage = document.querySelector(".hero-art img");
-  const galleryImages = [...document.querySelectorAll(".gallery-grid img")];
-  if (!heroImage || galleryImages.length < 2) return;
-
-  // Five evenly spaced gallery photos, keeping the hero rotation concise.
-  const heroPhotoIndexes = [0, 6, 12, 18, 24];
-  const photos = [...new Set(heroPhotoIndexes
-    .map((photoIndex) => galleryImages[photoIndex]?.getAttribute("src"))
-    .filter(Boolean))]
-    .filter((src) => new URL(src, document.baseURI).href !== new URL(heroImage.getAttribute("src"), document.baseURI).href);
-  if (!photos.length) return;
+  const photos = [
+  "images/072F229B-A4A3-4390-B3E0-C7E95CB2543D.jpg",
+  "images/4C5C6B0F-3ADE-4951-8A43-AD99F9D6344D.jpg",
+  "images/1512B914-90C5-413E-BC37-B7EC594AEE92.jpg",
+  "images/60D311D6-847E-48D8-BF13-9D53F818B751.png",
+  "images/A895C2C6-5FCA-45EE-BF1B-5C5967840A3D.jpg"
+];
+  if (!heroImage || photos.length < 2) return;
 
   let index = 0;
   const showNextPhoto = () => {
@@ -133,10 +131,10 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
       window.setTimeout(() => {
         heroImage.src = src;
         heroImage.alt = document.documentElement.lang === "es"
-          ? "Foto de Freen Sarocha de la galería"
+          ? "Foto destacada de Freen Sarocha"
           : document.documentElement.lang === "th"
-            ? "รูป Freen Sarocha จากแกลเลอรี"
-            : "Freen Sarocha photo from the gallery";
+            ? "ภาพไฮไลต์ของ Freen Sarocha"
+            : "Featured photo of Freen Sarocha";
         requestAnimationFrame(() => heroImage.classList.remove("is-changing"));
       }, 180);
     };
@@ -144,67 +142,6 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
   };
 
   window.setInterval(showNextPhoto, 10000);
-})();
-
-
-// Give every gallery photo a decorated label in a shuffled order each visit.
-(() => {
-  const labels = ["🌷 Tulip", "Freen ❤️", "Suey Mak 😍", "Sarooo ❤️"];
-  const stickers = [...document.querySelectorAll(".gallery-label")];
-  const shuffledLabels = [];
-
-  while (shuffledLabels.length < stickers.length) {
-    const batch = [...labels];
-    for (let i = batch.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [batch[i], batch[j]] = [batch[j], batch[i]];
-    }
-    shuffledLabels.push(...batch);
-  }
-
-  stickers.forEach((sticker, index) => {
-    sticker.textContent = shuffledLabels[index];
-  });
-})();
-
-
-// Open gallery photos at full size in an accessible modal viewer.
-(() => {
-  const dialog = document.querySelector("#gallery-lightbox");
-  const enlargedPhoto = dialog?.querySelector("img");
-  const closeButton = dialog?.querySelector(".gallery-lightbox-close");
-  if (!dialog || !enlargedPhoto || !closeButton) return;
-
-  const galleryPhotos = [...document.querySelectorAll("#gallery .gallery-card img")];
-  galleryPhotos.forEach((image) => {
-    image.tabIndex = 0;
-    image.setAttribute("role", "button");
-    image.setAttribute("aria-haspopup", "dialog");
-    image.setAttribute("aria-label", `Enlarge photo: ${image.alt}`);
-  });
-
-  const openPhoto = (image) => {
-    enlargedPhoto.src = image.currentSrc || image.src;
-    enlargedPhoto.alt = image.alt;
-    dialog.showModal();
-    closeButton.focus();
-  };
-  document.addEventListener("click", (event) => {
-    const image = event.target.closest("#gallery .gallery-card img");
-    if (image) openPhoto(image);
-  });
-  document.addEventListener("keydown", (event) => {
-    const image = event.target.closest?.("#gallery .gallery-card img");
-    if (image && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
-      openPhoto(image);
-    }
-  });
-  closeButton.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) dialog.close();
-  });
-  dialog.addEventListener("close", () => enlargedPhoto.removeAttribute("src"));
 })();
 
 

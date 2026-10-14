@@ -126,19 +126,45 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
 });
 
 
-// Rotate the hero photo through five curated images every 10 seconds.
+// Rotate through the 31 new fan-page photos every 10 seconds.
 (() => {
   const heroImage = document.querySelector(".hero-art img");
   const photos = [
-  "images/072F229B-A4A3-4390-B3E0-C7E95CB2543D.jpg",
-  "images/4C5C6B0F-3ADE-4951-8A43-AD99F9D6344D.jpg",
-  "images/1512B914-90C5-413E-BC37-B7EC594AEE92.jpg",
-  "images/60D311D6-847E-48D8-BF13-9D53F818B751.png",
-  "images/A895C2C6-5FCA-45EE-BF1B-5C5967840A3D.jpg"
-];
+    "images/rotating/photo-01.jpg",
+    "images/rotating/photo-02.jpg",
+    "images/rotating/photo-03.jpg",
+    "images/rotating/photo-04.jpg",
+    "images/rotating/photo-05.jpg",
+    "images/rotating/photo-06.jpg",
+    "images/rotating/photo-07.jpg",
+    "images/rotating/photo-08.jpg",
+    "images/rotating/photo-09.jpg",
+    "images/rotating/photo-10.jpg",
+    "images/rotating/photo-11.jpg",
+    "images/rotating/photo-12.jpg",
+    "images/rotating/photo-13.jpg",
+    "images/rotating/photo-14.jpg",
+    "images/rotating/photo-15.jpg",
+    "images/rotating/photo-16.jpg",
+    "images/rotating/photo-17.jpg",
+    "images/rotating/photo-18.jpg",
+    "images/rotating/photo-19.jpg",
+    "images/rotating/photo-20.jpg",
+    "images/rotating/photo-21.jpg",
+    "images/rotating/photo-22.jpg",
+    "images/rotating/photo-23.jpg",
+    "images/rotating/photo-24.jpg",
+    "images/rotating/photo-25.jpg",
+    "images/rotating/photo-26.jpg",
+    "images/rotating/photo-27.jpg",
+    "images/rotating/photo-28.jpg",
+    "images/rotating/photo-29.jpg",
+    "images/rotating/photo-30.jpg",
+    "images/rotating/photo-31.jpg"
+  ];
   if (!heroImage || photos.length < 2) return;
 
-  let index = 0;
+  let index = 1;
   const showNextPhoto = () => {
     if (document.hidden) return;
     const src = photos[index % photos.length];

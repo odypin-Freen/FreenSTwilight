@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Playfair+Display:wght@600;700;800&family=Fredoka:wght@500;600;700&family=Bowlby+One+SC&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261014-gallery-removed">
+  <link rel="stylesheet" href="style.css?v=20261014-legal-section">
 </head>
 <body>
   <div class="sparkle s1" role="button" tabindex="0" aria-label="Floating tulip" data-floater="tulip">🌷</div>
@@ -28,6 +28,7 @@
       <a href="#video" data-i18n="navVideo">Video</a>
       <a href="#community" data-i18n="navCommunity">Community</a>
       <a href="#links" data-i18n="navLinks">Links</a>
+      <a href="#legal" data-i18n="navLegal">Legal Notice</a>
     </nav>
     <div class="language-switcher" role="group" aria-label="Choose language" data-i18n-aria="languageGroup">
       <button class="language-option" type="button" data-language="en" aria-pressed="true">English</button>
@@ -121,10 +122,33 @@
         </section>
       </div>
     </section>
+    <section id="legal" class="section legal-section" aria-labelledby="legal-title">
+      <div class="section-title"><span>04</span><h2 id="legal-title" data-i18n="legalHeading">Legal Notice</h2></div>
+      <p class="section-intro legal-intro" data-i18n="legalIntro">Information about ownership, fan submissions, and use of media on this independent fan page.</p>
+      <div class="legal-grid">
+        <article class="legal-card legal-card-pink">
+          <h3 data-i18n="legalOwnershipHeading">Copyright and ownership</h3>
+          <p data-i18n="legalOwnership">Photos and video clips credited to Solenn Entertainment are attributed to Solenn Entertainment and/or the applicable rights holders. Other photos, videos, and playlist music remain the property of their respective copyright owners. No ownership of third-party material is claimed.</p>
+        </article>
+        <article class="legal-card legal-card-lavender">
+          <h3 data-i18n="legalFanHeading">Fan-submitted photos</h3>
+          <p data-i18n="legalFan">Fan-submitted photos are displayed for fan appreciation only and remain the property of their respective rights holders. By submitting a photo, contributors confirm they have the necessary rights or permission to share it and authorize its public display if approved.</p>
+        </article>
+        <article class="legal-card legal-card-mint">
+          <h3 data-i18n="legalProjectHeading">Independent fan project</h3>
+          <p data-i18n="legalProject">This is an independent, noncommercial fan project created to express Mexican fans’ appreciation and love for Freen Sarocha. It is not affiliated with, sponsored by, or endorsed by Freen Sarocha or Solenn Entertainment.</p>
+        </article>
+        <article class="legal-card legal-card-yellow">
+          <h3 data-i18n="legalPermissionsHeading">Permissions and reuse</h3>
+          <p data-i18n="legalPermissions">This notice does not grant a license or permission to reproduce, repost, or otherwise reuse any content. A noncommercial purpose or disclaimer alone does not establish that a use is legally authorized. Please obtain permission from the relevant rights holder before reusing material.</p>
+        </article>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer"><div>FREEN FAN PAGE</div><small><span data-i18n="footerCredit">Made with ♡ · Fan project ·</span> <a href="admin.html" data-i18n="admin">Admin</a></small><p class="footer-note" data-i18n="footerMessage">I created this page so we can have a place to share our memories of the CDMX 2026 event graciously made happen for Mexican Fans. I hope you enjoy this space and respectfully post your thoughts and pictures. Profanity and hate will not be tolerated this space is only for love for the fandom and for Freen.</p><p class="footer-note" data-i18n="footerDisclaimer">All photos and video clips credited to Solenn Entertainment remain the property of Solenn Entertainment and/or their respective rights holders. Other photos, videos, and playlist music remain the property of their respective copyright owners. Fan-submitted photos are displayed solely for noncommercial fan appreciation and remain the property of their respective owners; submitters are responsible for ensuring they have permission to share them. This independent fan page is not affiliated with or endorsed by Solenn Entertainment or Freen Sarocha. It was created to express the Mexican fans’ appreciation and love for Freen Sarocha. No ownership of third-party content is claimed, and this notice does not grant any license or permission to use it.</p><img class="site-footer-photo" src="images/footer/ody-and-puppy-4x4.jpg" alt="A person cuddling a puppy"><p class="footer-photo-caption">With Love from Ody</p><img class="site-footer-signature" src="images/footer/ody-signature.png" alt="Ody’s handwritten signature"></footer>
-  <script src="script.js?v=20261014-rights-disclaimer"></script>
+  <footer class="site-footer"><div>FREEN FAN PAGE</div><small><span data-i18n="footerCredit">Made with ♡ · Fan project ·</span> <a href="admin.html" data-i18n="admin">Admin</a> · <a href="#legal" data-i18n="navLegal">Legal Notice</a></small><p class="footer-note" data-i18n="footerMessage">I created this page so we can have a place to share our memories of the CDMX 2026 event graciously made happen for Mexican Fans. I hope you enjoy this space and respectfully post your thoughts and pictures. Profanity and hate will not be tolerated this space is only for love for the fandom and for Freen.</p><img class="site-footer-photo" src="images/footer/ody-and-puppy-4x4.jpg" alt="A person cuddling a puppy"><p class="footer-photo-caption">With Love from Ody</p><img class="site-footer-signature" src="images/footer/ody-signature.png" alt="Ody’s handwritten signature"></footer>
+  <script src="script.js?v=20261014-legal-section"></script>
   <script src="supabase-config.js"></script>
   <script type="module" src="community.js?v=20260926-community-translate"></script>
 </body>

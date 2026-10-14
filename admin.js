@@ -32,10 +32,32 @@ if (!ready) {
     if (!session) return;
     loginForm.hidden = true;
     panel.hidden = false;
-    const [{ data, error }, { data: approved, error: approvedError }] = await Promise.all([
-      supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "pending").order("created_at", { ascending: true }),
-      supabase.from("community_posts").select("id, display_name, message, image_path, created_at").eq("status", "approved").order("created_at", { ascending: false }).limit(60)
+    const fieldsWithEmail = "id, email, display_name, message, image_path, created_at";
+    const fieldsWithoutEmail = "id, display_name, message, image_path, created_at";
+    const loadPosts = (status, fields) => {
+      let query = supabase.from("community_posts").select(fields).eq("status", status);
+      query = status === "pending"
+        ? query.order("created_at", { ascending: true })
+        : query.order("created_at", { ascending: false }).limit(60);
+      return query;
+    };
+    let [pendingResult, approvedResult] = await Promise.all([
+      loadPosts("pending", fieldsWithEmail),
+      loadPosts("approved", fieldsWithEmail)
     ]);
+    const isMissingEmailColumn = (error) => error && (
+      error.code === "42703" || error.code === "PGRST204" ||
+      /email.*column|column.*email|schema cache/i.test(error.message || "")
+    );
+    const emailColumnMissing = isMissingEmailColumn(pendingResult.error) || isMissingEmailColumn(approvedResult.error);
+    if (emailColumnMissing) {
+      [pendingResult, approvedResult] = await Promise.all([
+        loadPosts("pending", fieldsWithoutEmail),
+        loadPosts("approved", fieldsWithoutEmail)
+      ]);
+    }
+    const { data, error } = pendingResult;
+    const { data: approved, error: approvedError } = approvedResult;
     if (error) {
       list.textContent = "Could not load the queue. Check that this account is listed as a community admin.";
       count.textContent = "";
@@ -44,6 +66,9 @@ if (!ready) {
     list.replaceChildren();
     approvedList.replaceChildren();
     count.textContent = data.length + " awaiting review";
+    if (emailColumnMissing) {
+      say("Email addresses are not configured yet. Add an email column to community_posts and save submission emails in submit-post.", "error");
+    }
     if (approvedError) {
       approvedCount.textContent = "Could not load approved posts.";
       say("The pending queue loaded, but approved posts could not be loaded.", "error");
@@ -57,6 +82,7 @@ if (!ready) {
       const image = document.createElement("img"); image.src = signed?.signedUrl || ""; image.alt = "Submitted fan photo";
       const details = document.createElement("div");
       const author = document.createElement("h3"); author.textContent = post.display_name || "Anonymous fan";
+      const email = document.createElement("p"); email.className = "review-meta review-email"; email.textContent = post.email || "Email not provided";
       const message = document.createElement("p"); message.textContent = post.message;
       const date = document.createElement("p"); date.className = "review-meta"; date.textContent = new Date(post.created_at).toLocaleString();
       const actions = document.createElement("div"); actions.className = "review-actions";
@@ -64,7 +90,7 @@ if (!ready) {
       const reject = document.createElement("button"); reject.className = "button reject-button"; reject.type = "button"; reject.textContent = "REJECT";
       approve.addEventListener("click", () => review(post, "approved", approve, reject));
       reject.addEventListener("click", () => review(post, "rejected", approve, reject));
-      actions.append(approve, reject); details.append(author, date, message, actions); article.append(image, details); list.append(article);
+      actions.append(approve, reject); details.append(author, email, date, message, actions); article.append(image, details); list.append(article);
     }
   }
 
@@ -87,12 +113,13 @@ if (!ready) {
       const image = document.createElement("img"); image.src = imageUrl; image.alt = "Approved community photo";
       const details = document.createElement("div");
       const author = document.createElement("h3"); author.textContent = post.display_name || "Anonymous fan";
+      const email = document.createElement("p"); email.className = "review-meta review-email"; email.textContent = post.email || "Email not provided";
       const message = document.createElement("p"); message.textContent = post.message;
       const date = document.createElement("p"); date.className = "review-meta"; date.textContent = new Date(post.created_at).toLocaleString();
       const actions = document.createElement("div"); actions.className = "review-actions";
       const remove = document.createElement("button"); remove.className = "button reject-button"; remove.type = "button"; remove.textContent = "REMOVE FROM PAGE";
       remove.addEventListener("click", () => removeApproved(post, remove));
-      actions.append(remove); details.append(author, date, message, actions); article.append(image, details); approvedList.append(article);
+      actions.append(remove); details.append(author, email, date, message, actions); article.append(image, details); approvedList.append(article);
     }
   }
 

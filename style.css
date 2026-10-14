@@ -395,15 +395,33 @@ body {
 }
 
 
-/* Sharper, more readable hero wordmark. */
+/* Modern, high-impact hero wordmark. */
 .hero-copy h1 {
-  font: 700 clamp(66px, 10.5vw, 132px)/.95 "Fredoka", "DM Sans", sans-serif;
-  letter-spacing: -.055em;
-  color: var(--ink);
-  -webkit-text-stroke: 0;
-  paint-order: normal;
-  text-shadow: 4px 4px 0 var(--pink), 8px 8px 0 var(--lavender);
+  position: relative;
+  display: inline-block;
+  margin: 18px 0 24px;
+  font: 700 clamp(72px, 11.5vw, 148px)/.88 "Fredoka", "DM Sans", sans-serif;
+  letter-spacing: -.065em;
+  color: var(--hot-pink);
+  background: linear-gradient(112deg, #e92e83 6%, #ff4fa3 48%, #9a6bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.5);
+  filter: drop-shadow(0 5px 0 rgba(33,21,43,.08));
+  text-shadow: 4px 4px 0 rgba(255,79,163,.2), 8px 8px 0 rgba(184,164,255,.28);
   transform: rotate(-2deg);
+}
+.hero-copy h1::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: -5%;
+  bottom: -10px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink), var(--lavender));
+  transform: rotate(-1deg);
 }
 
 

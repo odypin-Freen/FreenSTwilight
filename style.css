@@ -838,3 +838,42 @@ body {
   text-align: center;
   text-shadow: 1px 1px 0 #fff;
 }
+
+
+/* Dedicated legal notice cards. */
+.legal-section { scroll-margin-top: 100px; }
+.legal-intro { max-width: 820px; line-height: 1.6; }
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+  margin-top: 22px;
+}
+.legal-card {
+  padding: 21px;
+  border: 2px solid var(--ink);
+  border-radius: 19px;
+  background: var(--paper);
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.legal-card h3 {
+  margin: 0 0 11px;
+  font: 700 clamp(17px, 2vw, 21px)/1.25 "Playfair Display", serif;
+}
+.legal-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.legal-card-pink { background: #fff0f7; }
+.legal-card-lavender { background: #f4f0ff; }
+.legal-card-mint { background: #effbf7; }
+.legal-card-yellow { background: #fff9e6; }
+#legal .section-title > span { background: var(--pink); }
+@media (max-width: 650px) {
+  .legal-grid { grid-template-columns: 1fr; gap: 14px; }
+  .legal-card { padding: 17px; }
+  .legal-card p { font-size: 13px; line-height: 1.65; }
+}

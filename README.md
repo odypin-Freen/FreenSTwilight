@@ -30,14 +30,14 @@ This is an independent fan project and is not affiliated with Freen Sarocha or h
 
 ## Fan submissions and moderation
 
-The Community section accepts a short message and one JPG, PNG, or WebP image (up to 6 MB). Submissions stay in private storage and in a pending queue until an admin approves them. Only approved posts are returned to the public page. Admin sign-in is at `admin.html`; there is no public account registration.
+The Community section accepts a required email address, short message, and one JPG, PNG, or WebP image (up to 6 MB). Submission emails are stored in `community_posts.email` and visible only to signed-in community admins. Submissions stay in private storage and in a pending queue until an admin approves them. The admin page keeps an approved-post list with emails and lets the admin remove previously approved posts from the public page. Only approved posts are returned to the public page. Admin sign-in is at `admin.html`; there is no public account registration.
 
 This static site uses Supabase for authentication, database, private photo storage, and Edge Functions. GitHub Pages by itself cannot safely provide login or accept private uploads.
 
 ### One-time Supabase setup
 
 1. Create a Supabase project. In **Project Settings → API**, copy the project URL and the browser-safe publishable key into `supabase-config.js`. Never put a `service_role` or secret key in this file.
-2. Open the Supabase SQL Editor and run `supabase/schema.sql`.
+2. For a new project, open the Supabase SQL Editor and run `supabase/schema.sql`. For the existing project, run `supabase/migrations/20261014_add_community_email.sql` in the SQL Editor before deploying the updated function. Existing posts will show no email because their email was not collected.
 3. In **Authentication → Users**, create the admin user with an email and password. Afterward run this SQL in the SQL Editor, replacing the email with the admin email:
 
    ```sql

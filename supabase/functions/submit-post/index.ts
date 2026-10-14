@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
     const message = String(form.get("message") || "").trim();
     const image = form.get("photo");
     if (displayName.length > 40 || message.length < 2 || message.length > 500) return json({ error: "Name or message is outside the allowed length." }, 400, headers);
-    if (email.length > 254 || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) return json({ error: "Enter a valid email address." }, 400, headers);
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: "Enter a valid email address." }, 400, headers);
     if (!(image instanceof File) || image.size === 0 || image.size > maxBytes) return json({ error: "Choose an image up to 6 MB." }, 400, headers);
     const bytes = new Uint8Array(await image.arrayBuffer());
     if (!validImage(bytes, image.type)) return json({ error: "Use a valid JPG, PNG, or WebP image." }, 400, headers);

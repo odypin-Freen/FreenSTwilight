@@ -395,33 +395,41 @@ body {
 }
 
 
-/* Modern, high-impact hero wordmark. */
+/* Pop-art hero lettering inspired by classic comic-book covers. */
 .hero-copy h1 {
   position: relative;
-  display: inline-block;
-  margin: 18px 0 24px;
-  font: 700 clamp(72px, 11.5vw, 148px)/.88 "Fredoka", "DM Sans", sans-serif;
-  letter-spacing: -.065em;
-  color: var(--hot-pink);
-  background: linear-gradient(112deg, #e92e83 6%, #ff4fa3 48%, #9a6bff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px rgba(255,255,255,.5);
-  filter: drop-shadow(0 5px 0 rgba(33,21,43,.08));
-  text-shadow: 4px 4px 0 rgba(255,79,163,.2), 8px 8px 0 rgba(184,164,255,.28);
+  display: inline-flex;
+  align-items: center;
+  margin: 18px 0 26px;
+  font: 700 clamp(72px, 11.5vw, 148px)/.92 "Bowlby One SC", "Fredoka", sans-serif;
+  letter-spacing: -.035em;
   transform: rotate(-2deg);
 }
-.hero-copy h1::after {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: -5%;
-  bottom: -10px;
-  height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--pink), var(--lavender));
-  transform: rotate(-1deg);
+.hero-copy h1 .hero-letter {
+  display: inline-block;
+  -webkit-text-stroke: 4px var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 5px 7px 0 var(--ink), 8px 10px 0 rgba(255,79,163,.55);
+}
+.hero-copy h1 .hero-letter:nth-child(1) {
+  color: #20dce9;
+  transform: rotate(-5deg) translateY(2px);
+}
+.hero-copy h1 .hero-letter:nth-child(2) {
+  color: #ff3d9a;
+  transform: rotate(4deg) translateY(-5px);
+}
+.hero-copy h1 .hero-letter:nth-child(3) {
+  color: #ffd92e;
+  transform: rotate(-3deg) translateY(3px);
+}
+.hero-copy h1 .hero-letter:nth-child(4) {
+  color: #20dce9;
+  transform: rotate(3deg) translateY(-3px);
+}
+.hero-copy h1 .hero-letter:nth-child(5) {
+  color: #ff3d9a;
+  transform: rotate(-4deg) translateY(2px);
 }
 
 

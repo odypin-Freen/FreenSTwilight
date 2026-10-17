@@ -538,7 +538,12 @@ body {
   #links > .pet-doodle { left: 4px; width: 68px; }
 }
 @media (max-width: 1023px) {
-  .pet-doodle { display: none; }
+  .pet-doodle { display: block; width: 58px; opacity: .82; }
+  .hero > .pet-bunny { left: auto; right: 2px; bottom: 8px; width: 64px; }
+  #video > .pet-doodle { right: 2px; top: 52px; width: 60px; }
+  #gallery > .pet-doodle { left: 2px; top: 52px; width: 54px; }
+  #community > .pet-doodle { right: 2px; top: 48px; width: 58px; }
+  #links > .pet-doodle { left: 2px; bottom: 4px; width: 56px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pet-doodle { animation: none; }

@@ -525,6 +525,10 @@ body {
 #gallery > .pet-doodle { left: -55px; top: 105px; width: 88px; animation-delay: -2.3s; }
 #community > .pet-doodle { right: -54px; top: 56px; width: 96px; animation-delay: -4.1s; }
 #links > .pet-doodle { left: -55px; bottom: 6px; width: 90px; animation-delay: -2.8s; }
+.hero > .pet-extra-dog { left: -48px; top: 30px; width: 78px; animation-delay: -4.4s; }
+#video > .pet-extra-bunny { left: -48px; bottom: 10px; width: 76px; animation-delay: -5s; }
+#community > .pet-extra-bunny { left: -50px; bottom: 18px; width: 74px; animation-delay: -1.8s; }
+#links > .pet-extra-dog { right: -48px; bottom: 12px; width: 76px; animation-delay: -4.8s; }
 @keyframes pet-bob {
   0%, 100% { transform: translateY(0) rotate(-3deg); }
   50% { transform: translateY(-7px) rotate(3deg); }
@@ -544,6 +548,10 @@ body {
   #gallery > .pet-doodle { left: 2px; top: 52px; width: 54px; }
   #community > .pet-doodle { right: 2px; top: 48px; width: 58px; }
   #links > .pet-doodle { left: 2px; bottom: 4px; width: 56px; }
+  .hero > .pet-extra-dog { left: 2px; right: auto; top: auto; bottom: 8px; width: 52px; }
+  #video > .pet-extra-bunny { left: 2px; right: auto; top: auto; bottom: 4px; width: 50px; }
+  #community > .pet-extra-bunny { left: 2px; right: auto; top: auto; bottom: 4px; width: 50px; }
+  #links > .pet-extra-dog { left: auto; right: 2px; top: auto; bottom: 4px; width: 50px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pet-doodle { animation: none; }

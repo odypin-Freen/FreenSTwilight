@@ -126,7 +126,7 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
 });
 
 
-// Rotate through the 31 new fan-page photos every 10 seconds.
+// Rotate through the 35 new fan-page photos every 3 seconds.
 (() => {
   const heroImage = document.querySelector(".hero-art img");
   const photos = [
@@ -160,7 +160,11 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     "images/rotating/photo-28.jpg",
     "images/rotating/photo-29.jpg",
     "images/rotating/photo-30.jpg",
-    "images/rotating/photo-31.jpg"
+    "images/rotating/photo-31.jpg",
+    "images/rotating/photo-32.jpg",
+    "images/rotating/photo-33.jpg",
+    "images/rotating/photo-34.jpg",
+    "images/rotating/photo-35.jpg"
   ];
   if (!heroImage || photos.length < 2) return;
 
@@ -185,7 +189,7 @@ document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     preload.src = src;
   };
 
-  window.setInterval(showNextPhoto, 10000);
+  window.setInterval(showNextPhoto, 3000);
 })();
 
 
